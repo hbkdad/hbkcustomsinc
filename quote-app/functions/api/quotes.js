@@ -2,7 +2,8 @@ function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
-      "Content-Type": "application/json; charset=utf-8"
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store"
     }
   });
 }
@@ -11,14 +12,51 @@ function clean(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-export async function onRequestGet({ env }) {
-  const result = await env.QUOTE_DB.prepare(
-    "SELECT COUNT(*) AS total FROM quotes"
-  ).first();
+function isAuthorized(request, env) {
+  const configuredCode = clean(env.DASHBOARD_ACCESS_CODE);
+
+  if (!configuredCode) {
+    return false;
+  }
+
+  const url = new URL(request.url);
+  const queryCode = clean(url.searchParams.get("access_code"));
+  const headerCode = clean(request.headers.get("x-access-code"));
+
+  return queryCode === configuredCode || headerCode === configuredCode;
+}
+
+export async function onRequestGet(context) {
+  const { request, env } = context;
+
+  if (!isAuthorized(request, env)) {
+    return json({ error: "Unauthorized dashboard access." }, 401);
+  }
+
+  const rows = await env.QUOTE_DB.prepare(
+    `SELECT
+      id,
+      created_at,
+      name,
+      business_name,
+      email,
+      phone,
+      trade,
+      service_area,
+      service_type,
+      timeline,
+      budget_range,
+      website_url,
+      project_summary,
+      notes
+    FROM quotes
+    ORDER BY created_at DESC
+    LIMIT 100`
+  ).all();
 
   return json({
     ok: true,
-    total: result?.total || 0
+    leads: rows.results || []
   });
 }
 

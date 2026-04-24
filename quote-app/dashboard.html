@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HBK Lead Dashboard</title>
+  <meta name="description" content="Internal dashboard for HBK Customs Inc. quote submissions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="dashboard-shell">
+    <header class="dashboard-top">
+      <div>
+        <p class="eyebrow">HBK Internal</p>
+        <h1 class="dashboard-title">Lead Dashboard</h1>
+      </div>
+      <div class="dashboard-actions">
+        <a class="secondary-link" href="./index.html">Open Intake App</a>
+        <button type="button" class="back-btn" id="refresh-dashboard">Refresh</button>
+      </div>
+    </header>
+
+    <section class="dashboard-gate panel-card" id="dashboard-gate">
+      <div class="step-copy">
+        <p class="eyebrow">Protected View</p>
+        <h4>Enter your dashboard access code</h4>
+        <p>This keeps the lead queue private while HBK is still running lean.</p>
+      </div>
+      <div class="gate-row">
+        <input id="access-code" type="password" placeholder="Access code">
+        <button type="button" class="submit-btn" id="unlock-dashboard">Unlock Dashboard</button>
+      </div>
+      <p class="status" id="dashboard-status" aria-live="polite"></p>
+    </section>
+
+    <section class="dashboard-main" id="dashboard-main" hidden>
+      <div class="dashboard-stats">
+        <div class="panel-card stat-card">
+          <p class="card-label">Total Leads</p>
+          <strong id="lead-total">0</strong>
+        </div>
+        <div class="panel-card stat-card">
+          <p class="card-label">Newest Trade</p>
+          <strong id="lead-latest-trade">-</strong>
+        </div>
+        <div class="panel-card stat-card">
+          <p class="card-label">Newest Budget</p>
+          <strong id="lead-latest-budget">-</strong>
+        </div>
+      </div>
+
+      <section class="panel-card lead-list-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Submission Queue</p>
+            <h3>Recent quote requests</h3>
+          </div>
+          <span class="pill">Internal</span>
+        </div>
+        <div id="lead-list" class="lead-list"></div>
+      </section>
+    </section>
+  </div>
+
+  <script src="./dashboard.js" defer></script>
+</body>
+</html>
