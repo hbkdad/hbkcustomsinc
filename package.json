@@ -2,7 +2,8 @@
   "name": "hbkcustomsinc-site",
   "private": true,
   "scripts": {
-    "deploy": "wrangler pages deploy . --project-name=hbkcustomsinc --branch=main"
+    "deploy": "wrangler pages deploy . --project-name=hbkcustomsinc --branch=main",
+    "deploy:app": "wrangler pages deploy . --project-name=hbkcustomsinc-app --branch=main"
   },
   "devDependencies": {
     "wrangler": "^4.85.0"

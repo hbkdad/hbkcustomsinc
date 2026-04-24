@@ -1,0 +1,12 @@
+{
+  "name": "hbkcustomsinc-app",
+  "pages_build_output_dir": ".",
+  "compatibility_date": "2026-04-24",
+  "d1_databases": [
+    {
+      "binding": "QUOTE_DB",
+      "database_name": "hbkcustomsinc-quotes",
+      "database_id": "16a6e117-b426-447f-b618-c7e20fa38a94"
+    }
+  ]
+}
