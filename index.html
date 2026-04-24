@@ -121,6 +121,7 @@
     color: var(--black);
     font-weight: 700;
     padding: 10px 24px;
+    border-radius: 999px;
     text-decoration: none;
     transition: background 0.2s;
   }
@@ -234,6 +235,7 @@
     background: var(--blue);
     color: var(--black);
     padding: 16px 40px;
+    border-radius: 999px;
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s, transform 0.1s;
@@ -249,6 +251,7 @@
     color: var(--white);
     border: 1px solid #444;
     padding: 16px 40px;
+    border-radius: 999px;
     text-decoration: none;
     display: inline-block;
     transition: border-color 0.2s, color 0.2s;
@@ -623,6 +626,7 @@
     color: var(--black);
     border: none;
     padding: 18px 40px;
+    border-radius: 999px;
     cursor: pointer;
     margin-top: 8px;
     transition: background 0.2s;
@@ -675,6 +679,37 @@
     text-transform: uppercase;
     flex-wrap: wrap; gap: 12px;
   }
+  .footer-support {
+    border-top: 1px solid #222;
+    margin-bottom: 32px;
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-support-copy {
+    max-width: 520px;
+  }
+  .footer-support-copy h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .footer-support-copy p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+  #kofi-widget {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
 
 
   @keyframes hbkHexPulse {
@@ -705,6 +740,7 @@
     .why-grid, .quote-inner { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .footer-top { flex-direction: column; }
+    .footer-support { flex-direction: column; align-items: flex-start; }
     .packages-table { font-size: 12px; }
     .packages-table th, .packages-table td { padding: 12px 10px; }
   }
@@ -1150,6 +1186,19 @@
       </ul>
     </div>
   </div>
+  <div class="footer-support">
+    <div class="footer-support-copy">
+      <h4>Support HBK</h4>
+      <p>If you want to back the build while HBK Customs Inc. grows, you can support the startup directly through Ko-fi.</p>
+    </div>
+    <div id="kofi-widget">
+      <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+      <script type="text/javascript">
+        kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'I2I11XNXMT');
+        kofiwidget2.draw();
+      </script>
+    </div>
+  </div>
   <div class="footer-bottom">
     <span>© 2026 HBK Customs Inc. All rights reserved.</span>
     <span>Northern Ontario, Canada</span>
@@ -1209,6 +1258,7 @@
       a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue)' : '';
     });
   });
+
 </script>
 </body>
 </html>
