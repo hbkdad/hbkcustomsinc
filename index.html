@@ -1,0 +1,1215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="HBK Customs Inc. builds websites, branding systems, and lead tools for trade companies across Northern Ontario and beyond. Startup-friendly, fixed-scope, and built to generate quote requests.">
+<link rel="canonical" href="https://hbkcustoms.ca/">
+<title>HBK Customs Inc. - Trade-Focused Digital Design & Web Builds</title>
+
+<!-- HBK branding / icons -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="hex-favicon.png">
+<link rel="icon" type="image/png" sizes="180x180" href="hex-favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="hex-favicon.png">
+<link rel="mask-icon" href="hbk-icon.svg" color="#00b4d8">
+<meta name="theme-color" content="#00b4d8">
+
+<meta property="og:title" content="HBK Customs Inc. - Trade-Focused Digital Design & Web Builds">
+<meta property="og:description" content="Websites, branding systems, and digital tools for trade companies.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hbkcustoms.ca/">
+<meta property="og:image" content="logo-dark-1200.png">
+<meta property="og:image:alt" content="HBK Customs Inc. logo">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HBK Customs Inc. - Trade-Focused Digital Design & Web Builds">
+<meta name="twitter:description" content="Websites, branding systems, and digital tools for trade companies.">
+<meta name="twitter:image" content="logo-dark-1200.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "HBK Customs Inc.",
+  "url": "https://hbkcustoms.ca/",
+  "email": "hello@hbkcustoms.ca",
+  "description": "Trade-focused digital design, website builds, branding systems, and lead tools for contractors and industrial service companies.",
+  "areaServed": ["Northern Ontario", "Ontario", "Canada"],
+  "serviceType": [
+    "Website Upgrades",
+    "Full Website Builds",
+    "Monthly Maintenance",
+    "Digital Design and Branding",
+    "Quote Form Automation"
+  ]
+}
+</script>
+<style>
+  :root {
+    --black: #080808;
+    --steel: #1a1a1a;
+    --gray: #2e2e2e;
+    --mid: #888;
+    --light: #c8c8c8;
+    --white: #f0eeea;
+    --blue: #00b4d8;
+    --blue-dim: #007ea0;
+    --red: #e63946;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #222;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo .nav-mark {
+    display: block;
+    height: 38px;
+    width: 38px;
+    filter: drop-shadow(0 0 8px rgba(0,180,216,0.22));
+    animation: hbkHexPulse 2.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .nav-logo .nav-wordmark {
+    display: block;
+    height: 34px;
+    width: auto;
+  }
+  .nav-logo:hover .nav-mark {
+    animation-duration: 1.4s;
+    filter: drop-shadow(0 0 14px rgba(0,180,216,0.45));
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--blue);
+    color: var(--black);
+    font-weight: 700;
+    padding: 10px 24px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #00d0f5; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 59px,
+        rgba(0,180,216,0.04) 59px,
+        rgba(0,180,216,0.04) 60px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 59px,
+        rgba(0,180,216,0.04) 59px,
+        rgba(0,180,216,0.04) 60px
+      );
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 50%, rgba(0,180,216,0.08) 0%, transparent 70%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 1100px; }
+  .hero-brand {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 28px 0;
+  }
+  .hero-brand::before {
+    content: '';
+    position: absolute;
+    inset: -12% auto auto -10%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,216,0.28) 0%, rgba(0,180,216,0.08) 45%, transparent 72%);
+    filter: blur(6px);
+    animation: hbkAuraPulse 3.4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .hero-brand .hero-hex {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    width: 78px;
+    height: 78px;
+    transform: translateY(-50%);
+    animation: hbkHexFloat 4.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(0,180,216,0.30));
+    z-index: 0;
+  }
+  .hero-brand .hero-wordmark {
+    position: relative;
+    z-index: 1;
+    width: min(260px,55vw);
+    height: auto;
+    display: block;
+  }
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 40px; height: 1px; background: var(--blue);
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero h1 .accent { color: var(--blue); display: block; }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--light);
+    max-width: 560px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--blue);
+    color: var(--black);
+    padding: 16px 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: #00d0f5; transform: translateY(-1px); }
+  .btn-outline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid #444;
+    padding: 16px 40px;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  .hero-stats {
+    display: flex; gap: 48px; margin-top: 64px;
+    border-top: 1px solid #222; padding-top: 40px;
+  }
+  .hero-stats > div:nth-child(5) { display: none; }
+  .startup-note {
+    margin-top: 28px;
+    max-width: 620px;
+    padding: 18px 22px;
+    border: 1px solid #222;
+    background: rgba(26,26,26,0.85);
+  }
+  .startup-note-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .startup-note p {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.8;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 4px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 40px; }
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--blue); }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-intro {
+    font-size: 17px;
+    color: var(--light);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* SERVICES */
+  #services { background: var(--steel); }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
+  .service-card {
+    background: var(--black);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: #0e0e0e; }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--blue);
+    transition: height 0.3s ease;
+  }
+  .service-card:hover::before { height: 100%; }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    color: #1d1d1d;
+    line-height: 1;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+  }
+  .service-card:hover .service-num { color: #242424; }
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .service-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--blue);
+  }
+  .service-includes {
+    margin-top: 20px;
+    list-style: none;
+    font-size: 13px;
+    color: #666;
+  }
+  .service-includes li { padding: 5px 0; border-bottom: 1px solid #181818; }
+  .service-includes li::before { content: '- '; color: var(--blue-dim); }
+
+  /* NICHES */
+  #niches { background: var(--black); }
+  .niches-inner { max-width: 1100px; margin: 60px auto 0; }
+  .niche-list {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;
+  }
+  .local-note {
+    margin-top: 28px;
+    padding: 18px 20px;
+    border-left: 3px solid var(--blue);
+    background: #0d0d0d;
+    max-width: 760px;
+    font-size: 14px;
+    color: var(--light);
+  }
+  .niche-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    border: 1px solid #2a2a2a;
+    padding: 10px 20px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .niche-tag:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* WHY */
+  #why { background: var(--steel); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: center;
+  }
+  .why-points { display: flex; flex-direction: column; gap: 32px; }
+  .why-point {
+    display: flex; gap: 24px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #242424;
+  }
+  .why-point:last-child { border-bottom: none; }
+  .why-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--blue);
+    min-width: 48px;
+    line-height: 1;
+  }
+  .why-point-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .why-point-desc { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .why-visual {
+    background: var(--black);
+    border: 1px solid #222;
+    padding: 48px;
+    position: relative;
+  }
+  .why-visual::before {
+    content: 'HBK';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 160px;
+    color: #111;
+    position: absolute;
+    bottom: -20px; right: -10px;
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .why-visual-content { position: relative; z-index: 1; }
+  .tagline-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .tagline-main span { color: var(--blue); }
+  .tagline-sub { font-size: 14px; color: var(--mid); line-height: 1.8; }
+
+  /* PACKAGES TABLE */
+  #packages { background: var(--black); }
+  .packages-table { margin-top: 60px; width: 100%; border-collapse: collapse; }
+  .packages-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-align: left;
+    padding: 0 24px 20px;
+    border-bottom: 1px solid #222;
+  }
+  .packages-table td {
+    font-size: 14px;
+    color: var(--light);
+    padding: 18px 24px;
+    border-bottom: 1px solid #181818;
+    vertical-align: top;
+  }
+  .packages-table tr:last-child td { border-bottom: none; }
+  .packages-table .service-col {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .packages-table .price-col {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--blue);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--blue);
+    color: var(--black);
+    font-weight: 700;
+    padding: 3px 10px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  /* PROCESS */
+  #process { background: var(--steel); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 60px;
+    border: 1px solid #222;
+  }
+  .process-step {
+    padding: 40px 32px;
+    border-right: 1px solid #222;
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: #1d1d1d;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .step-desc { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+  /* QUOTE FORM */
+  #quote { background: var(--black); }
+  .quote-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 60px;
+  }
+  .quote-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .quote-info p { font-size: 14px; color: var(--mid); line-height: 1.8; margin-bottom: 32px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid #1a1a1a;
+    font-size: 14px;
+    color: var(--light);
+  }
+  .contact-item .ci-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    min-width: 60px;
+  }
+  form { display: flex; flex-direction: column; gap: 16px; }
+  label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    display: block;
+    margin-bottom: 6px;
+  }
+  input, select, textarea {
+    width: 100%;
+    background: var(--steel);
+    border: 1px solid #2a2a2a;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--blue); }
+  select option { background: var(--steel); }
+  textarea { resize: vertical; min-height: 120px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-submit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--blue);
+    color: var(--black);
+    border: none;
+    padding: 18px 40px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+    width: 100%;
+  }
+  .form-submit:hover { background: #00d0f5; }
+  .form-note {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-top: -4px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--steel);
+    border-top: 1px solid #222;
+    padding: 60px 40px 40px;
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 48px;
+    flex-wrap: wrap; gap: 40px;
+  }
+  .footer-brand img {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+  }
+  .footer-brand p { font-size: 13px; color: var(--mid); margin-top: 12px; max-width: 320px; }
+  .footer-links h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+  .footer-links ul { list-style: none; }
+  .footer-links li { padding: 5px 0; }
+  .footer-links a { font-size: 14px; color: var(--light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--blue); }
+  .footer-bottom {
+    border-top: 1px solid #222; padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: #444;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-wrap: wrap; gap: 12px;
+  }
+
+
+  @keyframes hbkHexPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.96; }
+    50% { transform: scale(1.06) rotate(2deg); opacity: 1; }
+  }
+
+  @keyframes hbkHexFloat {
+    0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); }
+    50% { transform: translateY(calc(-50% - 6px)) scale(1.045) rotate(3deg); }
+  }
+
+  @keyframes hbkAuraPulse {
+    0%, 100% { opacity: 0.55; transform: scale(0.96); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-logo { gap: 10px; }
+    .nav-logo .nav-mark { height: 32px; width: 32px; }
+    .nav-logo .nav-wordmark { height: 28px; }
+    section { padding: 80px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-brand .hero-hex { width: 62px; height: 62px; left: 12px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .why-grid, .quote-inner { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; }
+    .packages-table { font-size: 12px; }
+    .packages-table th, .packages-table td { padding: 12px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo" aria-label="HBK Customs Inc. home"><img class="nav-mark" src="hex-favicon.png" alt="HBK hex icon"><img class="nav-wordmark" src="hbk-primary-light.svg" alt="HBK Customs Inc."></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#niches">Industries</a></li>
+    <li><a href="#why">About</a></li>
+  </ul>
+  <a href="#quote" class="nav-cta">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-brand">
+      <img class="hero-hex" src="hex-favicon.png" alt="HBK animated hex">
+      <img class="hero-wordmark" src="logo-transparent-800.png" alt="HBK Customs Inc. logo">
+    </div>
+    <div class="hero-tag">HBK Customs Inc. - Trade-Focused Digital Builds</div>
+    <h1>
+      Built Different.
+      <span class="accent">Designed Digital.</span>
+    </h1>
+    <p class="hero-sub">
+      We build websites, branding systems, and digital tools for trade companies. Fast turnaround. No corporate fluff. Built by people who understand real work.
+    </p>
+    <div class="hero-actions">
+      <a href="#quote" class="btn-primary">Get a Free Review</a>
+      <a href="#services" class="btn-outline">See Services</a>
+    </div>
+    <div class="startup-note">
+      <div class="startup-note-title">Startup, but intentional</div>
+      <p>HBK is a new company, so the promise is simple: direct communication, fixed-scope work, fast turnaround, and digital systems built specifically for trades instead of generic agency fluff.</p>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">Direct</div>
+        <div class="stat-label">Founder-Led Builds</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Core Services</div>
+      </div>
+      <div>
+        <div class="stat-num">48H</div>
+        <div class="stat-label">Quote Turnaround</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Trade-Focused</div>
+      </div>
+      <div>
+        <div class="stat-num">Startup</div>
+        <div class="stat-label">Growing Proof</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Build</div>
+      <h2>Services</h2>
+    </div>
+    <p class="section-intro">Four focused offers. From a quick site cleanup to a full brand system, we've got a package for where you're at.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Website Upgrades</div>
+      <p class="service-desc">Got a site that looks embarrassing? We clean it up so it actually works and represents your company the right way.</p>
+      <div class="service-price">$500 - $1,500</div>
+      <ul class="service-includes">
+        <li>Homepage redesign</li>
+        <li>Mobile optimization</li>
+        <li>Quote & call buttons</li>
+        <li>Contact form fix</li>
+        <li>Basic SEO structure</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Full Website Builds</div>
+      <p class="service-desc">No website, or one that's beyond saving? We build you a complete professional site from the ground up.</p>
+      <div class="service-price">$1,500 - $4,000+</div>
+      <ul class="service-includes">
+        <li>Homepage + About + Services</li>
+        <li>Gallery / project section</li>
+        <li>Quote request form</li>
+        <li>Mobile-first design</li>
+        <li>SEO-ready structure</li>
+        <li>Contact + service area pages</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Monthly Maintenance</div>
+      <p class="service-desc">We keep your site updated and working so you can stay focused on the actual work. Set it and forget it.</p>
+      <div class="service-price">$99 - $399/mo</div>
+      <ul class="service-includes">
+        <li>Content & photo updates</li>
+        <li>Seasonal promos & banners</li>
+        <li>Form monitoring</li>
+        <li>Backup & uptime checks</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Digital Design & Branding</div>
+      <p class="service-desc">Logos, business kits, trade templates, invoice tools, and custom digital products built for real work.</p>
+      <div class="service-price">$150 - $1,200+</div>
+      <ul class="service-includes">
+        <li>Logo design</li>
+        <li>Business cards & flyers</li>
+        <li>Social media kits</li>
+        <li>Quote & invoice templates</li>
+        <li>AI-powered design packs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NICHES -->
+<section id="niches">
+  <div class="section-tag">Who We Work With</div>
+  <h2>Built for Trades</h2>
+  <p class="section-intro">We specialize in trade and industrial businesses. We get how your business runs - so we build sites that match it.</p>
+  <div class="niche-list">
+    <div class="niche-tag">Welders & Fabricators</div>
+    <div class="niche-tag">Millwrights</div>
+    <div class="niche-tag">Electricians</div>
+    <div class="niche-tag">Plumbers</div>
+    <div class="niche-tag">HVAC Companies</div>
+    <div class="niche-tag">Roofing Contractors</div>
+    <div class="niche-tag">Excavation & Grading</div>
+    <div class="niche-tag">Landscaping</div>
+    <div class="niche-tag">Mobile Mechanics</div>
+    <div class="niche-tag">General Contractors</div>
+    <div class="niche-tag">Industrial Services</div>
+    <div class="niche-tag">Mining Support</div>
+    <div class="niche-tag">Concrete & Paving</div>
+    <div class="niche-tag">Equipment Rental</div>
+  </div>
+  <div class="local-note">Based in Northern Ontario, with services built for local and regional trade businesses that need a stronger first impression, better mobile usability, and more qualified quote requests.</div>
+</section>
+
+<!-- WHY HBK -->
+<section id="why">
+  <div class="section-tag">The Difference</div>
+  <h2>Why HBK</h2>
+  <div class="why-grid">
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-icon">01</div>
+        <div>
+          <div class="why-point-title">We Know Trades</div>
+          <p class="why-point-desc">We're not a generic agency. We understand how trade businesses operate - the quotes, the crews, the seasonality. We build for your reality.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">02</div>
+        <div>
+          <div class="why-point-title">Fast Turnaround</div>
+          <p class="why-point-desc">No six-week timelines. Most upgrades are done in days. Full builds in weeks. You run a fast business - so do we.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">03</div>
+        <div>
+          <div class="why-point-title">Built to Generate Leads</div>
+          <p class="why-point-desc">Every site we build has one goal: get your phone ringing and your inbox full of quote requests. Not a portfolio piece - a business tool.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">04</div>
+        <div>
+          <div class="why-point-title">No BS Pricing</div>
+          <p class="why-point-desc">Flat-rate packages. No surprise invoices. You know what you're getting and what it costs before we start.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-content">
+        <div class="tagline-main">Custom Work.<br><span>Digital</span> Precision.</div>
+        <p class="tagline-sub">HBK Customs Inc. is where industrial craftsmanship meets digital automation. We combine trades knowledge, AI tools, and web systems to build things that actually work.</p>
+        <br>
+        <a href="#quote" class="btn-primary">Start a Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES TABLE -->
+<section id="packages">
+  <div class="section-tag">Pricing</div>
+  <h2>Package Details</h2>
+  <p class="section-intro">Every service is fixed-price and clearly scoped. Pick the tier that fits, or mix and match add-ons.</p>
+  <table class="packages-table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Includes</th>
+        <th>Price</th>
+        <th>Timeline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="service-col">Website Upgrade<br><small style="color:#555;font-weight:400;font-size:12px;letter-spacing:0">HBK Site Fix</small></td>
+        <td>Homepage refresh, mobile fix, call buttons, form cleanup, basic SEO</td>
+        <td class="price-col">$500-$1,500</td>
+        <td>3-7 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Full Website Build<span class="badge">Most Popular</span><br><small style="color:#555;font-weight:400;font-size:12px;letter-spacing:0">HBK Full Build</small></td>
+        <td>5-page site, mobile-first, quote form, gallery, about, services, contact, SEO-ready</td>
+        <td class="price-col">$1,500-$4,000</td>
+        <td>1-3 weeks</td>
+      </tr>
+      <tr>
+        <td class="service-col">Monthly Maintenance<br><small style="color:#555;font-weight:400;font-size:12px;letter-spacing:0">HBK Maintenance</small></td>
+        <td>Updates, banners, form checks, backups, priority support</td>
+        <td class="price-col">$99-$399/mo</td>
+        <td>Ongoing</td>
+      </tr>
+      <tr>
+        <td class="service-col">Logo Design</td>
+        <td>3 concepts, 2 revision rounds, all file formats</td>
+        <td class="price-col">$150-$500</td>
+        <td>3-5 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Business Card Design</td>
+        <td>Front + back, print-ready files</td>
+        <td class="price-col">$100</td>
+        <td>2-3 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Social Media Kit</td>
+        <td>Profile images, banners, post templates for 2 platforms</td>
+        <td class="price-col">$150</td>
+        <td>2-4 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Quote Form Automation</td>
+        <td>Online form to email lead delivery and auto-responder</td>
+        <td class="price-col">$150-$300</td>
+        <td>1-2 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Extra Pages</td>
+        <td>Service area pages, hiring page, gallery page, etc.</td>
+        <td class="price-col">$100 / page</td>
+        <td>1-2 days</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag">How It Works</div>
+  <h2>The Process</h2>
+  <p class="section-intro">Simple, fast, and no surprises. Here's exactly what happens from first contact to launch.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Free Review</div>
+      <p class="step-desc">Send us your site (or tell us you don't have one). We'll review it and send back a breakdown of exactly what we'd fix or build - no charge.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Scoped Quote</div>
+      <p class="step-desc">You get a flat-rate quote with no hidden fees. Approve it, pay a 50% deposit, and we get started immediately.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Build & Review</div>
+      <p class="step-desc">We build your site and send you a live preview. You give feedback. We make revisions until it's exactly right.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Launch & Support</div>
+      <p class="step-desc">We launch your site, hand over all files and logins, and you're live. Add a monthly care plan to keep it running smooth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote">
+  <div class="section-tag">Start Here</div>
+  <h2>Get a Free Quote</h2>
+  <div class="quote-inner">
+    <div class="quote-info">
+      <h3>Tell us about your business.</h3>
+      <p>We'll review your current situation and send back a clear plan with pricing within 48 hours. No obligation, no sales pitch - just straight answers.</p>
+      <div class="contact-item">
+        <span class="ci-label">Email</span>
+        <a href="mailto:hello@hbkcustoms.ca" style="color:var(--light);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--light)'">hello@hbkcustoms.ca</a>
+      </div>
+      <div class="contact-item">
+        <span class="ci-label">Response</span>
+        <span>Within 48 hours</span>
+      </div>
+      <div class="contact-item">
+        <span class="ci-label">Based</span>
+        <span>Northern Ontario, Canada</span>
+      </div>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith" required>
+        </div>
+        <div>
+          <label>Business Name</label>
+          <input type="text" placeholder="Smith Welding Ltd." required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Phone</label>
+          <input type="tel" placeholder="(705) 555-0100">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" placeholder="john@smithwelding.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Budget Range</label>
+          <select>
+            <option value="">Select a range</option>
+            <option>Under $1,000</option>
+            <option>$1,000 - $2,500</option>
+            <option>$2,500 - $5,000</option>
+            <option>$5,000+</option>
+          </select>
+        </div>
+        <div>
+          <label>Timeline</label>
+          <select>
+            <option value="">Select timing</option>
+            <option>ASAP</option>
+            <option>Within 2 weeks</option>
+            <option>Within 30 days</option>
+            <option>Just planning</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label>Trade / Industry</label>
+        <select>
+          <option value="">Select your trade</option>
+          <option>Welding / Fabrication</option>
+          <option>Millwright / Industrial</option>
+          <option>Electrical</option>
+          <option>Plumbing</option>
+          <option>HVAC</option>
+          <option>Roofing</option>
+          <option>Excavation / Grading</option>
+          <option>Landscaping</option>
+          <option>General Contracting</option>
+          <option>Mining / Resource</option>
+          <option>Other Trades</option>
+        </select>
+      </div>
+      <div>
+        <label>What do you need?</label>
+        <select required>
+          <option value="">Select a service</option>
+          <option>Website Upgrade (I have a site that needs work)</option>
+          <option>Full Website Build (I need a new site)</option>
+          <option>Monthly Maintenance Plan</option>
+          <option>Logo & Branding</option>
+          <option>Digital Products / Templates</option>
+          <option>Not sure - just want advice</option>
+        </select>
+      </div>
+      <div>
+        <label>Current Website URL (if you have one)</label>
+        <input type="url" placeholder="https://yoursite.com">
+      </div>
+      <div>
+        <label>Tell us more</label>
+        <textarea placeholder="What's your main goal - more calls, better reputation, lead form, something else? Any details help."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Request</button>
+      <p id="form-msg" style="font-size:13px;color:#00b4d8;margin-top:8px;display:none;">Thanks - we'll be in touch within 48 hours.</p>
+      <p class="form-note">Current form flow opens your default email app so nothing gets lost while HBK is still in startup mode. A full lead intake system can be added next.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <img src="hex-favicon.png" alt="HBK hex icon" style="width:42px;height:42px;filter:drop-shadow(0 0 10px rgba(0,180,216,0.2));animation:hbkHexPulse 3s ease-in-out infinite;">
+        <img src="hbk-primary-light.svg" alt="HBK Customs Inc. logo">
+      </div>
+      <p>Trade-focused digital design, website builds, and custom branded solutions. Built for real work.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Website Upgrades</a></li>
+        <li><a href="#services">Full Website Builds</a></li>
+        <li><a href="#services">Monthly Maintenance</a></li>
+        <li><a href="#services">Digital Design</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About HBK</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#niches">Industries</a></li>
+        <li><a href="#quote">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Get Started</h4>
+      <ul>
+        <li><a href="#quote">Free Website Review</a></li>
+        <li><a href="#packages">View Pricing</a></li>
+        <li><a href="#quote">Request a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 HBK Customs Inc. All rights reserved.</span>
+    <span>Northern Ontario, Canada</span>
+    <span>Built Different. Designed Digital.</span>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const name     = form.querySelector('input[type="text"]').value;
+    const business = form.querySelectorAll('input[type="text"]')[1].value;
+    const phone    = form.querySelector('input[type="tel"]').value;
+    const email    = form.querySelector('input[type="email"]').value;
+    const trade    = form.querySelectorAll('select')[0].value;
+    const service  = form.querySelectorAll('select')[1].value;
+    const website  = form.querySelector('input[type="url"]').value;
+    const details  = form.querySelector('textarea').value;
+
+    const subject = encodeURIComponent('New Quote Request - HBK Customs Inc.');
+    const body = encodeURIComponent(
+      'NEW QUOTE REQUEST\n' +
+      '=================\n\n' +
+      'Name:          ' + name     + '\n' +
+      'Business:      ' + business + '\n' +
+      'Phone:         ' + phone    + '\n' +
+      'Email:         ' + email    + '\n' +
+      'Trade:         ' + trade    + '\n' +
+      'Service Needed:' + service  + '\n' +
+      'Current Site:  ' + (website || 'None provided') + '\n\n' +
+      'Details:\n' + (details || 'None provided') + '\n\n' +
+      '---\nSent from hbkcustoms.ca'
+    );
+
+    window.location.href = 'mailto:hello@hbkcustoms.ca?subject=' + subject + '&body=' + body;
+
+    // Show confirmation
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Opening Email ';
+    btn.style.background = '#1a1a1a';
+    btn.style.color = '#00b4d8';
+  }
+
+  // Smooth scroll spy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--blue)' : '';
+    });
+  });
+</script>
+</body>
+</html>
+

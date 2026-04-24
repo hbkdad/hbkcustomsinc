@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background square -->
+  <rect width="200" height="200" fill="#080808"/>
+
+  <!-- Outer hex - centered and scaled up -->
+  <polygon points="100,22 148,50 148,106 100,134 52,106 52,50" fill="none" stroke="#00b4d8" stroke-width="4"/>
+  <!-- Inner hex fill -->
+  <polygon points="100,38 136,59 136,101 100,122 64,101 64,59" fill="#00b4d8" opacity="0.10"/>
+  <!-- Gear teeth - 6 directions -->
+  <line x1="100" y1="14" x2="100" y2="24" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+  <line x1="100" y1="142" x2="100" y2="152" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+  <line x1="44" y1="42" x2="50" y2="47" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+  <line x1="150" y1="113" x2="156" y2="118" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+  <line x1="44" y1="118" x2="50" y2="113" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+  <line x1="150" y1="47" x2="156" y2="42" stroke="#00b4d8" stroke-width="6" stroke-linecap="square"/>
+
+  <!-- Bold H shape in center -->
+  <rect x="72" y="58" width="14" height="50" fill="#00b4d8"/>
+  <rect x="114" y="58" width="14" height="50" fill="#00b4d8"/>
+  <rect x="72" y="79" width="56" height="12" fill="#00b4d8"/>
+
+  <!-- HBK text below icon -->
+  <text x="100" y="178" font-family="'Arial Black', 'Impact', sans-serif" font-size="26" font-weight="900" fill="#f0eeea" letter-spacing="8" text-anchor="middle">HBK</text>
+</svg>
