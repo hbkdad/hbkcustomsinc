@@ -60,6 +60,29 @@
           </div>
           <span class="pill">Internal</span>
         </div>
+        <div class="dashboard-filters">
+          <label class="filter-field">
+            <span>Status Filter</span>
+            <select id="filter-status">
+              <option value="">All statuses</option>
+              <option value="new">New</option>
+              <option value="follow-up">Follow-Up</option>
+              <option value="quoted">Quoted</option>
+              <option value="won">Won</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <label class="filter-field">
+            <span>Trade Filter</span>
+            <select id="filter-trade">
+              <option value="">All trades</option>
+            </select>
+          </label>
+          <label class="filter-field filter-search">
+            <span>Search</span>
+            <input id="filter-search" type="search" placeholder="Business, contact, email...">
+          </label>
+        </div>
         <div id="lead-list" class="lead-list"></div>
       </section>
     </section>

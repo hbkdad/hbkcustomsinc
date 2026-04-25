@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JTR Custom Works Case Study | HBK Customs Inc.</title>
+  <meta name="description" content="See how HBK Customs Inc. turned the JTR Custom Works industrial services demo into a cleaner, more modern trade-focused website concept.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #080808;
+      --steel: #11161d;
+      --panel: #161d25;
+      --line: rgba(255,255,255,0.08);
+      --light: #d5dde5;
+      --white: #f4f0eb;
+      --blue: #00b4d8;
+      --blue-soft: rgba(0,180,216,0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0,180,216,0.16), transparent 25%),
+        linear-gradient(180deg, #080808, #10151b 55%, #0c1116);
+      color: var(--white);
+      font-family: "Barlow", sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .back-link {
+      display: inline-flex;
+      margin-top: 28px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--light);
+      font-family: "Barlow Condensed", sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .hero {
+      padding: 48px 0 72px;
+    }
+    .eyebrow {
+      color: var(--blue);
+      font-family: "Barlow Condensed", sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 1.5px;
+      line-height: 0.96;
+    }
+    h1 { font-size: clamp(3.2rem, 9vw, 6.5rem); max-width: 11ch; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 18px; }
+    p { margin: 0; }
+    .hero-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 360px);
+      gap: 28px;
+      align-items: end;
+    }
+    .hero-copy p {
+      max-width: 62ch;
+      color: var(--light);
+      font-size: 1.06rem;
+    }
+    .hero-card, .section-card {
+      background: rgba(17,22,29,0.88);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    }
+    .hero-card ul, .deliverables ul, .lessons ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--light);
+    }
+    .hero-card li + li,
+    .deliverables li + li,
+    .lessons li + li { margin-top: 8px; }
+    .section {
+      padding: 0 0 72px;
+    }
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .visual-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .visual-grid img,
+    .gallery img {
+      width: 100%;
+      display: block;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .metric {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--blue-soft);
+      padding: 22px;
+    }
+    .metric strong {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .metric span {
+      color: var(--light);
+      font-size: 0.96rem;
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .cta a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .cta-primary {
+      background: var(--blue);
+      color: var(--black);
+    }
+    .cta-secondary {
+      border: 1px solid var(--line);
+      color: var(--light);
+    }
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-grid,
+      .visual-grid,
+      .gallery,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="https://hbkcustoms.ca/">Back to HBK Customs Inc.</a>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Case Study</p>
+      <h1>JTR Custom Works concept rebuild for an industrial services company in Timmins.</h1>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p>
+            This concept project reworked an industrial services website into a cleaner, more modern, more trade-credible experience. The focus was not flashy agency styling. It was clarity, trust, and making a Timmins-based industrial company feel strong on the web.
+          </p>
+          <div class="cta">
+            <a class="cta-primary" href="https://app.hbkcustoms.ca/">Start a Project</a>
+            <a class="cta-secondary" href="https://hbkcustoms.ca/">View HBK Site</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="eyebrow">Project Snapshot</p>
+          <img src="assets/case-studies/jtr/jtr-logo-white.png" alt="JTR Custom Works logo" style="max-width:220px;margin-bottom:16px;">
+          <ul>
+            <li>Industry: Industrial fabrication, repair, millwright, welding, confined space</li>
+            <li>Location: Timmins, Ontario</li>
+            <li>Goal: Modernize presentation without losing real-world trade credibility</li>
+            <li>Status: Demo / concept build used as proof of capability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-grid">
+        <div class="section-card deliverables">
+          <p class="eyebrow">What HBK Changed</p>
+          <h2>Clearer structure, stronger hierarchy, better service presentation.</h2>
+          <ul>
+            <li>Reframed the homepage around industrial trust and immediate service clarity</li>
+            <li>Organized welding, millwright, confined space, coatings, labour, and tank work into cleaner content groupings</li>
+            <li>Improved CTA placement for quote requests and service exploration</li>
+            <li>Built a more polished visual system while keeping the company's field-first tone</li>
+          </ul>
+        </div>
+        <div class="section-card lessons">
+          <p class="eyebrow">Why It Matters</p>
+          <h2>This is the kind of site cleanup trades companies actually need.</h2>
+          <ul>
+            <li>Industrial businesses often have strong capability but weak presentation online</li>
+            <li>HBK's niche is taking real trade businesses and making them look more credible without sounding fake</li>
+            <li>The JTR concept shows how service depth, local trust, and safety positioning can be translated into a better website</li>
+            <li>It also shows why HBK is focused on welders, contractors, and industrial support businesses in Northern Ontario</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <strong>6+</strong>
+          <span>core service categories reorganized into a cleaner structure</span>
+        </div>
+        <div class="metric">
+          <strong>1</strong>
+          <span>Timmins industrial brand reframed into a more modern digital presentation</span>
+        </div>
+        <div class="metric">
+          <strong>Trade-First</strong>
+          <span>messaging built for welders, millwrights, and industrial operators</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Visual Direction</p>
+      <h2>Cleaner, darker, stronger industrial feel without losing field credibility.</h2>
+      <div class="visual-grid">
+        <img src="assets/case-studies/jtr/banner1-1.jpg" alt="JTR homepage hero concept">
+        <img src="assets/case-studies/jtr/welding.jpg" alt="JTR welding project image">
+      </div>
+      <div class="gallery">
+        <img src="assets/case-studies/jtr/millwright.jpg" alt="JTR millwright image">
+        <img src="assets/case-studies/jtr/confined-space.jpg" alt="JTR confined space image">
+        <img src="assets/case-studies/jtr/jtr-logo-white.png" alt="JTR branding graphic" style="background:#0f141a;object-fit:contain;padding:24px;">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-card">
+        <p class="eyebrow">HBK Angle</p>
+        <h2>Built by someone already inside the trade world.</h2>
+        <p style="color:var(--light);max-width:70ch;">
+          HBK is not pitching trades from the outside. This case study is a good example of the actual niche: take a welding, industrial, or contractor business with strong real-world capability and turn it into a site that earns more trust, looks more current, and helps qualify better leads.
+        </p>
+        <div class="cta">
+          <a class="cta-primary" href="https://app.hbkcustoms.ca/">Request an HBK Review</a>
+          <a class="cta-secondary" href="https://hbkcustoms.ca/#quote">Talk to HBK</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

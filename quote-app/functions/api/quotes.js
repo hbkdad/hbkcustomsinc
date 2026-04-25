@@ -39,12 +39,16 @@ async function triggerNotification(env, record) {
     })
   });
 
+  const data = await response.json().catch(() => ({}));
+
   if (!response.ok) {
-    const data = await response.json().catch(() => ({}));
     return { ok: false, error: data.error || "Notification failed." };
   }
 
-  return { ok: true };
+  return {
+    ok: true,
+    acknowledgment: data.acknowledgment || null
+  };
 }
 
 function isAuthorized(request, env) {

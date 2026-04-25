@@ -421,6 +421,72 @@
   }
   .niche-tag:hover { border-color: var(--blue); color: var(--blue); }
 
+  /* PROOF */
+  #proof {
+    background: var(--steel);
+    border-top: 1px solid #181818;
+  }
+  .proof-card {
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 420px);
+    gap: 36px;
+    padding: 30px;
+    border: 1px solid #20252b;
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(17, 22, 29, 0.96), rgba(11, 16, 22, 0.94)),
+      radial-gradient(circle at top right, rgba(0,180,216,0.1), transparent 30%);
+    box-shadow: 0 32px 90px rgba(0,0,0,0.22);
+    align-items: center;
+  }
+  .proof-copy p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--light);
+    max-width: 62ch;
+  }
+  .proof-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .proof-meta span {
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid #26303a;
+    background: rgba(255,255,255,0.03);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .proof-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .proof-preview {
+    display: grid;
+    gap: 14px;
+  }
+  .proof-preview img {
+    width: 100%;
+    display: block;
+    border-radius: 22px;
+    border: 1px solid #26303a;
+    object-fit: cover;
+    background: #0d1116;
+  }
+  .proof-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
   /* WHY */
   #why { background: var(--steel); }
   .why-grid {
@@ -744,7 +810,7 @@
     .hero { padding: 100px 20px 60px; }
     .hero-brand .hero-hex { width: 62px; height: 62px; left: 12px; }
     .hero-stats { gap: 28px; flex-wrap: wrap; }
-    .why-grid, .quote-inner { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid, .quote-inner, .proof-card, .proof-preview-grid { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .footer-top { flex-direction: column; }
     .footer-support { flex-direction: column; align-items: flex-start; }
@@ -904,6 +970,37 @@
     <div class="niche-tag">Equipment Rental</div>
   </div>
   <div class="local-note">Based in Timmins and serving Northern Ontario, with services built for local and regional trade businesses that need a stronger first impression, better mobile usability, and more qualified quote requests.</div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="section-tag">Proof of Work</div>
+  <h2>JTR Custom Works Case Study</h2>
+  <p class="section-intro">A trade-focused concept rebuild for an industrial services company in Timmins. Cleaned up structure, stronger service presentation, and a more credible first impression without losing the field-first tone.</p>
+  <div class="proof-card">
+    <div class="proof-copy">
+      <p>
+        This is the kind of work HBK is built to do: take a welding, industrial, or contractor business with solid real-world capability and turn it into a website that feels more current, more trustworthy, and easier to contact.
+      </p>
+      <div class="proof-meta">
+        <span>Timmins, Ontario</span>
+        <span>Industrial Services</span>
+        <span>Concept Rebuild</span>
+        <span>Trade-First Positioning</span>
+      </div>
+      <div class="proof-actions">
+        <a href="jtr-custom-works-case-study.html" class="btn-primary">View Case Study</a>
+        <a href="https://app.hbkcustoms.ca/" class="btn-outline">Request an HBK Review</a>
+      </div>
+    </div>
+    <div class="proof-preview">
+      <img src="assets/case-studies/jtr/banner1-1.jpg" alt="JTR Custom Works case study preview hero image">
+      <div class="proof-preview-grid">
+        <img src="assets/case-studies/jtr/welding.jpg" alt="JTR Custom Works welding image">
+        <img src="assets/case-studies/jtr/millwright.jpg" alt="JTR Custom Works millwright image">
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- WHY HBK -->
@@ -1185,6 +1282,7 @@
         <li><a href="#why">About HBK</a></li>
         <li><a href="#process">Our Process</a></li>
         <li><a href="#niches">Industries</a></li>
+        <li><a href="jtr-custom-works-case-study.html">JTR Case Study</a></li>
         <li><a href="#quote">Contact</a></li>
       </ul>
     </div>

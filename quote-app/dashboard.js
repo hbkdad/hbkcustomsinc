@@ -8,8 +8,12 @@ const leadList = document.getElementById("lead-list");
 const leadTotal = document.getElementById("lead-total");
 const latestTrade = document.getElementById("lead-latest-trade");
 const latestBudget = document.getElementById("lead-latest-budget");
+const statusFilter = document.getElementById("filter-status");
+const tradeFilter = document.getElementById("filter-trade");
+const searchFilter = document.getElementById("filter-search");
 
 const ACCESS_KEY = "hbk-dashboard-access-code";
+let allLeads = [];
 
 function setStatus(message, state = "") {
   statusEl.textContent = message;
@@ -24,11 +28,55 @@ function storeCode(value) {
   window.localStorage.setItem(ACCESS_KEY, value);
 }
 
+function uniqueTrades(leads) {
+  return [...new Set(leads.map((lead) => lead.trade).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+function populateTradeFilter(leads) {
+  const selected = tradeFilter.value;
+  const options = uniqueTrades(leads);
+
+  tradeFilter.innerHTML = '<option value="">All trades</option>';
+  for (const trade of options) {
+    const option = document.createElement("option");
+    option.value = trade;
+    option.textContent = trade;
+    tradeFilter.appendChild(option);
+  }
+
+  if (options.includes(selected)) {
+    tradeFilter.value = selected;
+  }
+}
+
+function filteredLeads() {
+  const statusValue = statusFilter.value;
+  const tradeValue = tradeFilter.value;
+  const searchValue = searchFilter.value.trim().toLowerCase();
+
+  return allLeads.filter((lead) => {
+    const matchesStatus = !statusValue || (lead.lead_status || "new") === statusValue;
+    const matchesTrade = !tradeValue || lead.trade === tradeValue;
+
+    const haystack = [
+      lead.business_name,
+      lead.name,
+      lead.email,
+      lead.phone,
+      lead.project_summary,
+      lead.internal_notes
+    ].join(" ").toLowerCase();
+    const matchesSearch = !searchValue || haystack.includes(searchValue);
+
+    return matchesStatus && matchesTrade && matchesSearch;
+  });
+}
+
 function renderLeads(leads) {
   leadList.innerHTML = "";
 
   if (!leads.length) {
-    leadList.innerHTML = '<p class="empty-state">No quote requests yet.</p>';
+    leadList.innerHTML = '<p class="empty-state">No quote requests match the current filters.</p>';
     leadTotal.textContent = "0";
     latestTrade.textContent = "-";
     latestBudget.textContent = "-";
@@ -96,6 +144,10 @@ function renderLeads(leads) {
   attachLeadActions();
 }
 
+function renderDashboard() {
+  renderLeads(filteredLeads());
+}
+
 function setInlineMessage(id, message, state = "") {
   const el = document.querySelector(`[data-lead-message="${id}"]`);
   if (!el) return;
@@ -135,6 +187,13 @@ async function saveLead(id) {
       throw new Error(data.error || "Could not save lead.");
     }
 
+    const lead = allLeads.find((item) => item.id === id);
+    if (lead) {
+      lead.lead_status = statusField.value;
+      lead.internal_notes = notesField.value;
+    }
+
+    renderDashboard();
     setInlineMessage(id, "Saved.", "success");
   } catch (error) {
     setInlineMessage(id, error.message || "Could not save lead.", "error");
@@ -161,7 +220,9 @@ async function loadDashboard(code) {
     throw new Error(data.error || "Could not load dashboard.");
   }
 
-  renderLeads(data.leads || []);
+  allLeads = data.leads || [];
+  populateTradeFilter(allLeads);
+  renderDashboard();
   gate.hidden = true;
   main.hidden = false;
   setStatus("Dashboard loaded.", "success");
@@ -210,6 +271,11 @@ refreshButton?.addEventListener("click", async () => {
   } catch (error) {
     setStatus(error.message || "Could not refresh the dashboard.", "error");
   }
+});
+
+[statusFilter, tradeFilter, searchFilter].forEach((input) => {
+  input?.addEventListener("input", renderDashboard);
+  input?.addEventListener("change", renderDashboard);
 });
 
 const savedCode = readStoredCode();

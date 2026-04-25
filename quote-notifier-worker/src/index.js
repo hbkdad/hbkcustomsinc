@@ -22,7 +22,11 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-function buildRawEmail(payload) {
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean(value));
+}
+
+function buildInternalAlertEmail(payload) {
   const from = "alerts@hbkcustoms.ca";
   const to = "alerts@hbkcustoms.ca";
   const subject = `New HBK lead: ${clean(payload.businessName) || "Trade quote request"}`;
@@ -96,6 +100,72 @@ function buildRawEmail(payload) {
   return new EmailMessage(from, to, raw);
 }
 
+function buildClientAcknowledgmentEmail(payload) {
+  const from = "alerts@hbkcustoms.ca";
+  const to = clean(payload.email);
+  const name = clean(payload.name) || "there";
+  const businessName = clean(payload.businessName) || "your business";
+  const subject = "HBK received your quote request";
+  const textBody = [
+    `Hi ${name},`,
+    "",
+    `HBK received your quote request for ${businessName}.`,
+    "",
+    "We will review the details and reply within 48 hours with the next step, a scoped recommendation, or follow-up questions if we need a bit more context.",
+    "",
+    "What happens next:",
+    "- We review your trade, service type, and project goals",
+    "- We check any current website link you included",
+    "- We reply with a clear path forward",
+    "",
+    "If you need to add anything in the meantime, reply to hello@hbkcustoms.ca or call 705-365-7429.",
+    "",
+    "HBK Customs Inc.",
+    "Timmins, Ontario",
+    "Serving Northern Ontario"
+  ].join("\n");
+
+  const htmlBody = `
+    <p>Hi ${escapeHtml(name)},</p>
+    <p><strong>HBK received your quote request</strong> for ${escapeHtml(businessName)}.</p>
+    <p>We will review the details and reply within <strong>48 hours</strong> with the next step, a scoped recommendation, or follow-up questions if we need a bit more context.</p>
+    <p><strong>What happens next:</strong></p>
+    <ul>
+      <li>We review your trade, service type, and project goals</li>
+      <li>We check any current website link you included</li>
+      <li>We reply with a clear path forward</li>
+    </ul>
+    <p>If you need to add anything in the meantime, reply to <a href="mailto:hello@hbkcustoms.ca">hello@hbkcustoms.ca</a> or call <a href="tel:17053657429">705-365-7429</a>.</p>
+    <p><strong>HBK Customs Inc.</strong><br>Timmins, Ontario<br>Serving Northern Ontario</p>
+  `.trim();
+
+  const boundary = `hbk-${crypto.randomUUID()}`;
+  const raw = [
+    `From: HBK Customs Inc. <${from}>`,
+    `To: ${to}`,
+    "Reply-To: hello@hbkcustoms.ca",
+    `Subject: ${subject}`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/alternative; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    'Content-Type: text/plain; charset="UTF-8"',
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    textBody,
+    "",
+    `--${boundary}`,
+    'Content-Type: text/html; charset="UTF-8"',
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    htmlBody,
+    "",
+    `--${boundary}--`
+  ].join("\r\n");
+
+  return new EmailMessage(from, to, raw);
+}
+
 export default {
   async fetch(request, env) {
     if (request.method !== "POST") {
@@ -116,8 +186,15 @@ export default {
     }
 
     try {
-      await env.EMAIL.send(buildRawEmail(payload));
-      return json({ ok: true });
+      await env.EMAIL.send(buildInternalAlertEmail(payload));
+
+      let acknowledgment = { ok: false, skipped: true };
+      if (isValidEmail(payload.email)) {
+        await env.EMAIL.send(buildClientAcknowledgmentEmail(payload));
+        acknowledgment = { ok: true };
+      }
+
+      return json({ ok: true, acknowledgment });
     } catch (error) {
       return json({ error: error.message || "Could not send email." }, 500);
     }
