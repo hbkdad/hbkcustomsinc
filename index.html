@@ -693,53 +693,61 @@
     color: var(--mid);
     min-width: 60px;
   }
-  form { display: flex; flex-direction: column; gap: 16px; }
-  label {
+  .quote-app-card {
+    border: 1px solid #20252b;
+    border-radius: 28px;
+    padding: 32px;
+    background:
+      linear-gradient(180deg, rgba(17, 22, 29, 0.96), rgba(11, 16, 22, 0.94)),
+      radial-gradient(circle at top right, rgba(0,180,216,0.1), transparent 30%);
+    box-shadow: 0 32px 90px rgba(0,0,0,0.22);
+  }
+  .quote-app-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .quote-app-card p {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .quote-points {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0 28px;
+  }
+  .quote-point {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-top: 1px solid #1a1f25;
+    font-size: 14px;
+    color: var(--light);
+  }
+  .quote-point strong {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--mid);
-    display: block;
-    margin-bottom: 6px;
+    color: var(--blue);
+    min-width: 88px;
   }
-  input, select, textarea {
-    width: 100%;
-    background: var(--steel);
-    border: 1px solid #2a2a2a;
-    color: var(--white);
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    padding: 14px 16px;
-    outline: none;
-    transition: border-color 0.2s;
+  .quote-app-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 20px;
   }
-  input:focus, select:focus, textarea:focus { border-color: var(--blue); }
-  select option { background: var(--steel); }
-  textarea { resize: vertical; min-height: 120px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-submit {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 700;
-    background: var(--blue);
-    color: var(--black);
-    border: none;
-    padding: 18px 40px;
-    border-radius: 999px;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: background 0.2s;
-    width: 100%;
-  }
-  .form-submit:hover { background: #00d0f5; }
-  .form-note {
+  .quote-micro {
     font-size: 12px;
     color: var(--mid);
     line-height: 1.7;
-    margin-top: -4px;
+    margin-top: 18px;
   }
 
   /* FOOTER */
@@ -1178,11 +1186,11 @@
 <!-- QUOTE FORM -->
 <section id="quote">
   <div class="section-tag">Start Here</div>
-  <h2>Get a Free Quote</h2>
+  <h2>Start Your HBK Review</h2>
   <div class="quote-inner">
     <div class="quote-info">
-      <h3>Tell us about your business.</h3>
-      <p>We'll review your current situation and send back a clear plan with pricing within 48 hours. No obligation, no sales pitch - just straight answers.</p>
+      <h3>Use the live intake app.</h3>
+      <p>The main site now sends every request through the same intake system that powers HBK notifications, acknowledgments, and the internal lead dashboard. No duplicate forms. No email-app handoff.</p>
       <div class="contact-item">
         <span class="ci-label">Email</span>
         <a href="mailto:hello@hbkcustoms.ca" style="color:var(--light);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--light)'">hello@hbkcustoms.ca</a>
@@ -1200,90 +1208,29 @@
         <span>Timmins, Ontario - Serving Northern Ontario</span>
       </div>
     </div>
-    <form onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div>
-          <label>Your Name</label>
-          <input type="text" placeholder="John Smith" required>
+    <div class="quote-app-card">
+      <h3>One intake path. Cleaner leads.</h3>
+      <p>Open the live HBK intake app to send your project details, budget range, timeline, trade, and current website in one place. You will get an automatic acknowledgment right away, and HBK will follow up within 48 hours.</p>
+      <div class="quote-points">
+        <div class="quote-point">
+          <strong>Step 1</strong>
+          <span>Fill out the 3-step intake on your phone or desktop.</span>
         </div>
-        <div>
-          <label>Business Name</label>
-          <input type="text" placeholder="Smith Welding Ltd." required>
+        <div class="quote-point">
+          <strong>Step 2</strong>
+          <span>HBK gets the submission instantly through the lead dashboard and email alerts.</span>
         </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label>Phone</label>
-          <input type="tel" placeholder="(705) 555-0100">
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" placeholder="john@smithwelding.com" required>
+        <div class="quote-point">
+          <strong>Step 3</strong>
+          <span>You get a direct follow-up with the next step, scoped direction, or pricing path.</span>
         </div>
       </div>
-      <div class="form-row">
-        <div>
-          <label>Budget Range</label>
-          <select>
-            <option value="">Select a range</option>
-            <option>Under $1,000</option>
-            <option>$1,000 - $2,500</option>
-            <option>$2,500 - $5,000</option>
-            <option>$5,000+</option>
-          </select>
-        </div>
-        <div>
-          <label>Timeline</label>
-          <select>
-            <option value="">Select timing</option>
-            <option>ASAP</option>
-            <option>Within 2 weeks</option>
-            <option>Within 30 days</option>
-            <option>Just planning</option>
-          </select>
-        </div>
+      <div class="quote-app-actions">
+        <a href="https://app.hbkcustoms.ca/" class="btn-primary">Open Intake App</a>
+        <a href="https://app.hbkcustoms.ca/" class="btn-outline">Request a Quote</a>
       </div>
-      <div>
-        <label>Trade / Industry</label>
-        <select>
-          <option value="">Select your trade</option>
-          <option>Welding / Fabrication</option>
-          <option>Millwright / Industrial</option>
-          <option>Electrical</option>
-          <option>Plumbing</option>
-          <option>HVAC</option>
-          <option>Roofing</option>
-          <option>Excavation / Grading</option>
-          <option>Landscaping</option>
-          <option>General Contracting</option>
-          <option>Mining / Resource</option>
-          <option>Other Trades</option>
-        </select>
-      </div>
-      <div>
-        <label>What do you need?</label>
-        <select required>
-          <option value="">Select a service</option>
-          <option>Website Upgrade (I have a site that needs work)</option>
-          <option>Full Website Build (I need a new site)</option>
-          <option>Monthly Maintenance Plan</option>
-          <option>Logo & Branding</option>
-          <option>Digital Products / Templates</option>
-          <option>Not sure - just want advice</option>
-        </select>
-      </div>
-      <div>
-        <label>Current Website URL (if you have one)</label>
-        <input type="url" placeholder="https://yoursite.com">
-      </div>
-      <div>
-        <label>Tell us more</label>
-        <textarea placeholder="What's your main goal - more calls, better reputation, lead form, something else? Any details help."></textarea>
-      </div>
-      <button type="submit" class="form-submit">Send My Request</button>
-      <p id="form-msg" style="font-size:13px;color:#00b4d8;margin-top:8px;display:none;">Thanks - we'll be in touch within 48 hours.</p>
-      <p class="form-note">Current form flow opens your default email app so nothing gets lost while HBK is still in startup mode. A full lead intake system can be added next.</p>
-    </form>
+      <p class="quote-micro">Prefer direct contact first? Email <a href="mailto:hello@hbkcustoms.ca" style="color:var(--blue);text-decoration:none;">hello@hbkcustoms.ca</a> or call <a href="tel:+17053657429" style="color:var(--blue);text-decoration:none;">705-365-7429</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -1346,45 +1293,6 @@
 </footer>
 
 <script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-
-    const name     = form.querySelector('input[type="text"]').value;
-    const business = form.querySelectorAll('input[type="text"]')[1].value;
-    const phone    = form.querySelector('input[type="tel"]').value;
-    const email    = form.querySelector('input[type="email"]').value;
-    const trade    = form.querySelectorAll('select')[0].value;
-    const service  = form.querySelectorAll('select')[1].value;
-    const website  = form.querySelector('input[type="url"]').value;
-    const details  = form.querySelector('textarea').value;
-
-    const subject = encodeURIComponent('New Quote Request - HBK Customs Inc.');
-    const body = encodeURIComponent(
-      'NEW QUOTE REQUEST\n' +
-      '=================\n\n' +
-      'Name:          ' + name     + '\n' +
-      'Business:      ' + business + '\n' +
-      'Phone:         ' + phone    + '\n' +
-      'Email:         ' + email    + '\n' +
-      'Trade:         ' + trade    + '\n' +
-      'Service Needed:' + service  + '\n' +
-      'Current Site:  ' + (website || 'None provided') + '\n\n' +
-      'Details:\n' + (details || 'None provided') + '\n\n' +
-      '---\nSent from hbkcustoms.ca'
-    );
-
-    window.location.href = 'mailto:hello@hbkcustoms.ca?subject=' + subject + '&body=' + body;
-
-    // Show confirmation
-    const msg = document.getElementById('form-msg');
-    msg.style.display = 'block';
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Opening Email ';
-    btn.style.background = '#1a1a1a';
-    btn.style.color = '#00b4d8';
-  }
-
   // Smooth scroll spy
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
