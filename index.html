@@ -264,6 +264,35 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-demo {
+    position: relative;
+    border-color: rgba(0, 180, 216, 0.45);
+    color: var(--white);
+    background: rgba(0, 180, 216, 0.08);
+    padding-right: 54px;
+  }
+  .btn-demo::before {
+    content: 'LIVE';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    opacity: 0.95;
+  }
+  .btn-demo::after {
+    content: '↗';
+    margin-left: 10px;
+    color: var(--blue);
+    font-size: 15px;
+  }
+  .btn-demo:hover {
+    border-color: var(--blue);
+    background: rgba(0, 180, 216, 0.14);
+    color: var(--white);
+  }
   .hero-stats {
     display: flex; gap: 48px; margin-top: 64px;
     border-top: 1px solid #222; padding-top: 40px;
@@ -990,7 +1019,7 @@
       </div>
       <div class="proof-actions">
         <a href="jtr-custom-works-case-study.html" class="btn-primary">View Case Study</a>
-        <a href="https://jtrcustom.netlify.app/" class="btn-outline" target="_blank" rel="noreferrer">Open Live JTR Demo</a>
+        <a href="https://jtrcustom.netlify.app/" class="btn-outline btn-demo" target="_blank" rel="noreferrer">Open JTR Demo</a>
         <a href="https://app.hbkcustoms.ca/" class="btn-outline">Request an HBK Review</a>
       </div>
     </div>

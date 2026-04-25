@@ -166,6 +166,29 @@
       border: 1px solid var(--line);
       color: var(--light);
     }
+    .cta-demo {
+      position: relative;
+      border: 1px solid rgba(0,180,216,0.4);
+      background: rgba(0,180,216,0.1);
+      color: var(--white);
+      padding-right: 52px;
+    }
+    .cta-demo::before {
+      content: "LIVE";
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%);
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--blue);
+    }
+    .cta-demo::after {
+      content: "↗";
+      margin-left: 10px;
+      color: var(--blue);
+      font-size: 15px;
+    }
     @media (max-width: 900px) {
       .hero-grid,
       .section-grid,
@@ -192,7 +215,7 @@
             This concept project reworked an industrial services website into a cleaner, more modern, more trade-credible experience. The focus was not flashy agency styling. It was clarity, trust, and making a Timmins-based industrial company feel strong on the web.
           </p>
           <div class="cta">
-            <a class="cta-primary" href="https://jtrcustom.netlify.app/" target="_blank" rel="noreferrer">Open Live Demo</a>
+            <a class="cta-demo" href="https://jtrcustom.netlify.app/" target="_blank" rel="noreferrer">Open JTR Demo</a>
             <a class="cta-secondary" href="https://app.hbkcustoms.ca/">Start a Project</a>
             <a class="cta-secondary" href="https://hbkcustoms.ca/">View HBK Site</a>
           </div>
@@ -278,7 +301,7 @@
           HBK is not pitching trades from the outside. This case study is a good example of the actual niche: take a welding, industrial, or contractor business with strong real-world capability and turn it into a site that earns more trust, looks more current, and helps qualify better leads.
         </p>
         <div class="cta">
-          <a class="cta-primary" href="https://jtrcustom.netlify.app/" target="_blank" rel="noreferrer">View JTR Demo</a>
+          <a class="cta-demo" href="https://jtrcustom.netlify.app/" target="_blank" rel="noreferrer">View JTR Demo</a>
           <a class="cta-primary" href="https://app.hbkcustoms.ca/">Request an HBK Review</a>
           <a class="cta-secondary" href="https://hbkcustoms.ca/#quote">Talk to HBK</a>
         </div>
