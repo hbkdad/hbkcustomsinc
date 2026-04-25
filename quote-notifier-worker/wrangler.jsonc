@@ -5,7 +5,7 @@
   "send_email": [
     {
       "name": "EMAIL",
-      "destination_address": "michellavigne@hotmail.ca"
+      "destination_address": "alerts@hbkcustoms.ca"
     }
   ]
 }

@@ -24,7 +24,7 @@ function escapeHtml(value) {
 
 function buildRawEmail(payload) {
   const from = "alerts@hbkcustoms.ca";
-  const to = "michellavigne@hotmail.ca";
+  const to = "alerts@hbkcustoms.ca";
   const subject = `New HBK lead: ${clean(payload.businessName) || "Trade quote request"}`;
   const textBody = [
     "New HBK Quote Request",
