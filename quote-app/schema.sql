@@ -12,7 +12,10 @@ CREATE TABLE IF NOT EXISTS quotes (
   budget_range TEXT,
   website_url TEXT,
   project_summary TEXT NOT NULL,
-  notes TEXT
+  notes TEXT,
+  lead_status TEXT NOT NULL DEFAULT 'new',
+  internal_notes TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_quotes_created_at ON quotes(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_quotes_lead_status ON quotes(lead_status);

@@ -48,7 +48,9 @@ export async function onRequestGet(context) {
       budget_range,
       website_url,
       project_summary,
-      notes
+      notes,
+      lead_status,
+      internal_notes
     FROM quotes
     ORDER BY created_at DESC
     LIMIT 100`
@@ -106,8 +108,10 @@ export async function onRequestPost({ request, env }) {
       budget_range,
       website_url,
       project_summary,
-      notes
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      notes,
+      lead_status,
+      internal_notes
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(
     id,
     createdAt,
@@ -122,11 +126,65 @@ export async function onRequestPost({ request, env }) {
     record.budget_range,
     record.website_url,
     record.project_summary,
-    record.notes
+    record.notes,
+    "new",
+    ""
   ).run();
 
   return json({
     ok: true,
     id
   }, 201);
+}
+
+export async function onRequestPatch({ request, env }) {
+  if (!isAuthorized(request, env)) {
+    return json({ error: "Unauthorized dashboard access." }, 401);
+  }
+
+  let body;
+
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Invalid JSON body." }, 400);
+  }
+
+  const id = clean(body.id);
+  const leadStatus = clean(body.leadStatus) || "new";
+  const internalNotes = clean(body.internalNotes);
+  const allowedStatuses = new Set(["new", "follow-up", "quoted", "won", "closed"]);
+
+  if (!id) {
+    return json({ error: "Missing lead id." }, 400);
+  }
+
+  if (!allowedStatuses.has(leadStatus)) {
+    return json({ error: "Invalid lead status." }, 400);
+  }
+
+  const result = await env.QUOTE_DB.prepare(
+    `UPDATE quotes
+    SET lead_status = ?, internal_notes = ?
+    WHERE id = ?`
+  ).bind(
+    leadStatus,
+    internalNotes,
+    id
+  ).run();
+
+  if (!result.success) {
+    return json({ error: "Could not update lead." }, 500);
+  }
+
+  if ((result.meta?.changes || 0) < 1) {
+    return json({ error: "Lead not found." }, 404);
+  }
+
+  return json({
+    ok: true,
+    id,
+    leadStatus,
+    internalNotes
+  });
 }

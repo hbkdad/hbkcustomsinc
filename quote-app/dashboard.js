@@ -37,7 +37,7 @@ function renderLeads(leads) {
 
   leadTotal.textContent = String(leads.length);
   latestTrade.textContent = leads[0].trade || "-";
-  latestBudget.textContent = leads[0].budget_range || "-";
+  latestBudget.textContent = leads[0].lead_status || "-";
 
   for (const lead of leads) {
     const article = document.createElement("article");
@@ -49,6 +49,8 @@ function renderLeads(leads) {
       lead.timeline || "No timeline",
       lead.budget_range || "No budget"
     ].filter(Boolean);
+
+    const currentStatus = lead.lead_status || "new";
 
     article.innerHTML = `
       <div class="lead-head">
@@ -66,10 +68,87 @@ function renderLeads(leads) {
       </div>
       <p class="lead-summary">${lead.project_summary || ""}</p>
       ${lead.notes ? `<div class="lead-notes"><strong>Notes:</strong> ${lead.notes}</div>` : ""}
+      <div class="lead-manage">
+        <label class="manage-field">
+          <span>Status</span>
+          <select data-lead-status="${lead.id}">
+            <option value="new" ${currentStatus === "new" ? "selected" : ""}>New</option>
+            <option value="follow-up" ${currentStatus === "follow-up" ? "selected" : ""}>Follow-Up</option>
+            <option value="quoted" ${currentStatus === "quoted" ? "selected" : ""}>Quoted</option>
+            <option value="won" ${currentStatus === "won" ? "selected" : ""}>Won</option>
+            <option value="closed" ${currentStatus === "closed" ? "selected" : ""}>Closed</option>
+          </select>
+        </label>
+        <label class="manage-field manage-notes">
+          <span>Internal Notes</span>
+          <textarea data-lead-notes="${lead.id}" placeholder="Private follow-up notes, next step, quote details...">${lead.internal_notes || ""}</textarea>
+        </label>
+        <div class="manage-actions">
+          <button type="button" class="submit-btn save-lead-btn" data-lead-save="${lead.id}">Save Lead</button>
+          <p class="inline-status" data-lead-message="${lead.id}"></p>
+        </div>
+      </div>
     `;
 
     leadList.appendChild(article);
   }
+
+  attachLeadActions();
+}
+
+function setInlineMessage(id, message, state = "") {
+  const el = document.querySelector(`[data-lead-message="${id}"]`);
+  if (!el) return;
+  el.textContent = message;
+  el.dataset.state = state;
+}
+
+async function saveLead(id) {
+  const code = readStoredCode();
+  const statusField = document.querySelector(`[data-lead-status="${id}"]`);
+  const notesField = document.querySelector(`[data-lead-notes="${id}"]`);
+  const saveButton = document.querySelector(`[data-lead-save="${id}"]`);
+
+  if (!code || !statusField || !notesField || !saveButton) {
+    return;
+  }
+
+  saveButton.disabled = true;
+  setInlineMessage(id, "Saving...", "");
+
+  try {
+    const response = await fetch(`/api/quotes?access_code=${encodeURIComponent(code)}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id,
+        leadStatus: statusField.value,
+        internalNotes: notesField.value
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Could not save lead.");
+    }
+
+    setInlineMessage(id, "Saved.", "success");
+  } catch (error) {
+    setInlineMessage(id, error.message || "Could not save lead.", "error");
+  } finally {
+    saveButton.disabled = false;
+  }
+}
+
+function attachLeadActions() {
+  document.querySelectorAll("[data-lead-save]").forEach((button) => {
+    button.addEventListener("click", () => {
+      saveLead(button.dataset.leadSave);
+    });
+  });
 }
 
 async function loadDashboard(code) {

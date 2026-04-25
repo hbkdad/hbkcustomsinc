@@ -498,6 +498,56 @@ textarea {
   margin-top: 12px;
 }
 
+.lead-manage {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+}
+
+.manage-field {
+  display: grid;
+  gap: 8px;
+}
+
+.manage-field span {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #dfe8ef;
+}
+
+.manage-notes textarea {
+  min-height: 110px;
+}
+
+.manage-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.save-lead-btn {
+  padding: 14px 20px;
+}
+
+.inline-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.inline-status[data-state="success"] {
+  color: var(--success);
+}
+
+.inline-status[data-state="error"] {
+  color: #ff9da0;
+}
+
 .empty-state {
   margin: 0;
 }
