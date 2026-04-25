@@ -8,5 +8,12 @@
       "database_name": "hbkcustomsinc-quotes",
       "database_id": "16a6e117-b426-447f-b618-c7e20fa38a94"
     }
+  ],
+  "services": [
+    {
+      "binding": "NOTIFIER",
+      "service": "hbkcustomsinc-notifier",
+      "environment": "production"
+    }
   ]
 }

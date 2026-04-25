@@ -12,6 +12,41 @@ function clean(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+async function triggerNotification(env, record) {
+  if (!env.NOTIFIER || !env.NOTIFIER_SHARED_SECRET) {
+    return { ok: false, skipped: true };
+  }
+
+  const response = await env.NOTIFIER.fetch("https://internal-notify/send", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-hbk-notify-secret": env.NOTIFIER_SHARED_SECRET
+    },
+    body: JSON.stringify({
+      name: record.name,
+      businessName: record.business_name,
+      email: record.email,
+      phone: record.phone,
+      trade: record.trade,
+      serviceArea: record.service_area,
+      serviceType: record.service_type,
+      timeline: record.timeline,
+      budgetRange: record.budget_range,
+      websiteUrl: record.website_url,
+      projectSummary: record.project_summary,
+      notes: record.notes
+    })
+  });
+
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}));
+    return { ok: false, error: data.error || "Notification failed." };
+  }
+
+  return { ok: true };
+}
+
 function isAuthorized(request, env) {
   const configuredCode = clean(env.DASHBOARD_ACCESS_CODE);
 
@@ -131,9 +166,12 @@ export async function onRequestPost({ request, env }) {
     ""
   ).run();
 
+  const notification = await triggerNotification(env, record);
+
   return json({
     ok: true,
-    id
+    id,
+    notification
   }, 201);
 }
 
