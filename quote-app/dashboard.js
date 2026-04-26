@@ -11,6 +11,8 @@ const latestBudget = document.getElementById("lead-latest-budget");
 const leadNewCount = document.getElementById("lead-new-count");
 const leadFollowupDue = document.getElementById("lead-followup-due");
 const leadQuotesMonth = document.getElementById("lead-quotes-month");
+const leadWonMonth = document.getElementById("lead-won-month");
+const leadCloseRate = document.getElementById("lead-close-rate");
 const statusFilter = document.getElementById("filter-status");
 const tradeFilter = document.getElementById("filter-trade");
 const searchFilter = document.getElementById("filter-search");
@@ -76,6 +78,9 @@ function computeStats(leads) {
   let newCount = 0;
   let followupDue = 0;
   let quotesMonth = 0;
+  let wonMonth = 0;
+  let totalQuoted = 0;
+  let totalWon = 0;
 
   for (const lead of leads) {
     const status = lead.lead_status || "new";
@@ -98,9 +103,23 @@ function computeStats(leads) {
     if (quotedOn.startsWith(monthKey)) {
       quotesMonth += 1;
     }
+
+    if (quotedOn) {
+      totalQuoted += 1;
+    }
+
+    if (status === "won") {
+      totalWon += 1;
+      const wonDate = quotedOn || lead.contacted_on || lead.created_at || "";
+      if (String(wonDate).startsWith(monthKey)) {
+        wonMonth += 1;
+      }
+    }
   }
 
-  return { newCount, followupDue, quotesMonth };
+  const closeRate = totalQuoted > 0 ? `${Math.round((totalWon / totalQuoted) * 100)}%` : "0%";
+
+  return { newCount, followupDue, quotesMonth, wonMonth, closeRate };
 }
 
 function filteredLeads() {
@@ -223,6 +242,8 @@ function renderDashboard() {
   leadNewCount.textContent = String(stats.newCount);
   leadFollowupDue.textContent = String(stats.followupDue);
   leadQuotesMonth.textContent = String(stats.quotesMonth);
+  leadWonMonth.textContent = String(stats.wonMonth);
+  leadCloseRate.textContent = stats.closeRate;
   renderLeads(filteredLeads());
 }
 
