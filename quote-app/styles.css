@@ -343,6 +343,10 @@ textarea,
   display: grid;
 }
 
+.dashboard-stats-secondary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .stat-card strong {
   font-size: 1.8rem;
   font-family: "Barlow Condensed", sans-serif;
@@ -600,6 +604,7 @@ textarea {
 
   .hero-points,
   .dashboard-stats,
+  .dashboard-stats-secondary,
   .dashboard-filters,
   .manage-grid {
     grid-template-columns: 1fr;

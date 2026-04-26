@@ -8,6 +8,9 @@ const leadList = document.getElementById("lead-list");
 const leadTotal = document.getElementById("lead-total");
 const latestTrade = document.getElementById("lead-latest-trade");
 const latestBudget = document.getElementById("lead-latest-budget");
+const leadNewCount = document.getElementById("lead-new-count");
+const leadFollowupDue = document.getElementById("lead-followup-due");
+const leadQuotesMonth = document.getElementById("lead-quotes-month");
 const statusFilter = document.getElementById("filter-status");
 const tradeFilter = document.getElementById("filter-trade");
 const searchFilter = document.getElementById("filter-search");
@@ -47,6 +50,57 @@ function populateTradeFilter(leads) {
   if (options.includes(selected)) {
     tradeFilter.value = selected;
   }
+}
+
+function startOfToday() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
+}
+
+function daysBetween(fromDate, toDate) {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.floor((toDate - fromDate) / msPerDay);
+}
+
+function parseLeadDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function computeStats(leads) {
+  const today = startOfToday();
+  const monthKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}`;
+
+  let newCount = 0;
+  let followupDue = 0;
+  let quotesMonth = 0;
+
+  for (const lead of leads) {
+    const status = lead.lead_status || "new";
+    const createdAt = parseLeadDate(lead.created_at);
+    const contactedOn = parseLeadDate(lead.contacted_on);
+    const quotedOn = lead.quoted_on || "";
+
+    if (status === "new") {
+      newCount += 1;
+      if (createdAt && daysBetween(createdAt, today) >= 2) {
+        followupDue += 1;
+      }
+    } else if (status === "follow-up") {
+      const followSource = contactedOn || createdAt;
+      if (followSource && daysBetween(followSource, today) >= 5) {
+        followupDue += 1;
+      }
+    }
+
+    if (quotedOn.startsWith(monthKey)) {
+      quotesMonth += 1;
+    }
+  }
+
+  return { newCount, followupDue, quotesMonth };
 }
 
 function filteredLeads() {
@@ -165,6 +219,10 @@ function renderLeads(leads) {
 }
 
 function renderDashboard() {
+  const stats = computeStats(allLeads);
+  leadNewCount.textContent = String(stats.newCount);
+  leadFollowupDue.textContent = String(stats.followupDue);
+  leadQuotesMonth.textContent = String(stats.quotesMonth);
   renderLeads(filteredLeads());
 }
 
