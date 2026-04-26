@@ -12,6 +12,11 @@ function clean(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function normalizeDate(value) {
+  const cleaned = clean(value);
+  return /^\d{4}-\d{2}-\d{2}$/.test(cleaned) ? cleaned : "";
+}
+
 async function triggerNotification(env, record) {
   if (!env.NOTIFIER || !env.NOTIFIER_SHARED_SECRET) {
     return { ok: false, skipped: true };
@@ -89,7 +94,9 @@ export async function onRequestGet(context) {
       project_summary,
       notes,
       lead_status,
-      internal_notes
+      internal_notes,
+      contacted_on,
+      quoted_on
     FROM quotes
     ORDER BY created_at DESC
     LIMIT 100`
@@ -149,8 +156,10 @@ export async function onRequestPost({ request, env }) {
       project_summary,
       notes,
       lead_status,
-      internal_notes
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      internal_notes,
+      contacted_on,
+      quoted_on
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(
     id,
     createdAt,
@@ -167,6 +176,8 @@ export async function onRequestPost({ request, env }) {
     record.project_summary,
     record.notes,
     "new",
+    "",
+    "",
     ""
   ).run();
 
@@ -195,6 +206,8 @@ export async function onRequestPatch({ request, env }) {
   const id = clean(body.id);
   const leadStatus = clean(body.leadStatus) || "new";
   const internalNotes = clean(body.internalNotes);
+  let contactedOn = normalizeDate(body.contactedOn);
+  let quotedOn = normalizeDate(body.quotedOn);
   const allowedStatuses = new Set(["new", "follow-up", "quoted", "won", "closed"]);
 
   if (!id) {
@@ -205,13 +218,23 @@ export async function onRequestPatch({ request, env }) {
     return json({ error: "Invalid lead status." }, 400);
   }
 
+  if (!contactedOn && leadStatus !== "new") {
+    contactedOn = new Date().toISOString().slice(0, 10);
+  }
+
+  if (!quotedOn && (leadStatus === "quoted" || leadStatus === "won")) {
+    quotedOn = new Date().toISOString().slice(0, 10);
+  }
+
   const result = await env.QUOTE_DB.prepare(
     `UPDATE quotes
-    SET lead_status = ?, internal_notes = ?
+    SET lead_status = ?, internal_notes = ?, contacted_on = ?, quoted_on = ?
     WHERE id = ?`
   ).bind(
     leadStatus,
     internalNotes,
+    contactedOn,
+    quotedOn,
     id
   ).run();
 
@@ -227,6 +250,8 @@ export async function onRequestPatch({ request, env }) {
     ok: true,
     id,
     leadStatus,
-    internalNotes
+    internalNotes,
+    contactedOn,
+    quotedOn
   });
 }

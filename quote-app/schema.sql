@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS quotes (
   project_summary TEXT NOT NULL,
   notes TEXT,
   lead_status TEXT NOT NULL DEFAULT 'new',
-  internal_notes TEXT
+  internal_notes TEXT,
+  contacted_on TEXT,
+  quoted_on TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_quotes_created_at ON quotes(created_at DESC);

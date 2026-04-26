@@ -99,6 +99,15 @@ function renderLeads(leads) {
     ].filter(Boolean);
 
     const currentStatus = lead.lead_status || "new";
+    const contactedOn = lead.contacted_on || "";
+    const quotedOn = lead.quoted_on || "";
+    const timelineMeta = [];
+    if (contactedOn) {
+      timelineMeta.push(`<span>Contacted ${contactedOn}</span>`);
+    }
+    if (quotedOn) {
+      timelineMeta.push(`<span>Quoted ${quotedOn}</span>`);
+    }
 
     article.innerHTML = `
       <div class="lead-head">
@@ -109,6 +118,7 @@ function renderLeads(leads) {
         <span class="pill small-pill">${new Date(lead.created_at).toLocaleString()}</span>
       </div>
       <div class="lead-meta">${meta.map((item) => `<span>${item}</span>`).join("")}</div>
+      ${timelineMeta.length ? `<div class="lead-meta lead-meta-dates">${timelineMeta.join("")}</div>` : ""}
       <div class="lead-links">
         <a href="mailto:${lead.email}">${lead.email}</a>
         <a href="tel:${lead.phone.replace(/[^0-9+]/g, "")}">${lead.phone}</a>
@@ -127,6 +137,16 @@ function renderLeads(leads) {
             <option value="closed" ${currentStatus === "closed" ? "selected" : ""}>Closed</option>
           </select>
         </label>
+        <div class="manage-grid">
+          <label class="manage-field">
+            <span>Contacted Date</span>
+            <input type="date" data-lead-contacted="${lead.id}" value="${contactedOn}">
+          </label>
+          <label class="manage-field">
+            <span>Quoted Date</span>
+            <input type="date" data-lead-quoted="${lead.id}" value="${quotedOn}">
+          </label>
+        </div>
         <label class="manage-field manage-notes">
           <span>Internal Notes</span>
           <textarea data-lead-notes="${lead.id}" placeholder="Private follow-up notes, next step, quote details...">${lead.internal_notes || ""}</textarea>
@@ -158,10 +178,12 @@ function setInlineMessage(id, message, state = "") {
 async function saveLead(id) {
   const code = readStoredCode();
   const statusField = document.querySelector(`[data-lead-status="${id}"]`);
+  const contactedField = document.querySelector(`[data-lead-contacted="${id}"]`);
+  const quotedField = document.querySelector(`[data-lead-quoted="${id}"]`);
   const notesField = document.querySelector(`[data-lead-notes="${id}"]`);
   const saveButton = document.querySelector(`[data-lead-save="${id}"]`);
 
-  if (!code || !statusField || !notesField || !saveButton) {
+  if (!code || !statusField || !contactedField || !quotedField || !notesField || !saveButton) {
     return;
   }
 
@@ -177,6 +199,8 @@ async function saveLead(id) {
       body: JSON.stringify({
         id,
         leadStatus: statusField.value,
+        contactedOn: contactedField.value,
+        quotedOn: quotedField.value,
         internalNotes: notesField.value
       })
     });
@@ -190,6 +214,8 @@ async function saveLead(id) {
     const lead = allLeads.find((item) => item.id === id);
     if (lead) {
       lead.lead_status = statusField.value;
+      lead.contacted_on = data.contactedOn || "";
+      lead.quoted_on = data.quotedOn || "";
       lead.internal_notes = notesField.value;
     }
 
