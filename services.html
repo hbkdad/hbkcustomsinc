@@ -14,6 +14,7 @@
   * { box-sizing:border-box; }
   body { margin:0; background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; line-height:1.7; position:relative; }
   body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none; background:repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px), repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px), radial-gradient(ellipse 80% 60% at 60% 18%, rgba(0,180,216,0.12) 0%, rgba(0,180,216,0.04) 32%, transparent 72%), linear-gradient(180deg,#080808,#10151b 55%,#0c1116); }
+  body.nav-open { overflow:hidden; }
   a { color:inherit; text-decoration:none; }
   nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(8,8,8,0.92); backdrop-filter:blur(8px); border-bottom:1px solid #222; padding:0 40px; height:64px; }
   footer { padding:24px 40px; border-top:1px solid #202020; border-bottom:none; background:var(--steel); }
@@ -23,9 +24,15 @@
   .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
   .brand { display:inline-flex; align-items:center; gap:12px; font-family:'Barlow Condensed',sans-serif; letter-spacing:2px; text-transform:uppercase; }
   .brand img { width:38px; height:38px; }
+  .nav-menu { display:flex; align-items:center; gap:28px; }
   .nav-links { display:flex; gap:36px; flex-wrap:wrap; }
   .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
   .nav-links a.active, .nav-links a:hover { color:var(--blue); }
+  .nav-toggle { display:none; width:44px; height:44px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--white); padding:0; align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; }
+  .nav-toggle span { display:block; width:18px; height:2px; border-radius:999px; background:var(--white); transition:transform 0.2s, opacity 0.2s; }
+  nav.is-open .nav-toggle span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  nav.is-open .nav-toggle span:nth-child(2) { opacity:0; }
+  nav.is-open .nav-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
   .nav-cta, .btn, .btn-outline { display:inline-block; border-radius:999px; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
   .nav-cta { padding:10px 24px; background:var(--blue); color:#000; }
   .btn { padding:14px 24px; background:var(--blue); color:#000; }
@@ -50,22 +57,25 @@
   ul { margin:0; padding-left:18px; color:var(--light); }
   li + li { margin-top:8px; }
   .footer-copy { color:var(--mid); max-width:720px; }
-  @media (max-width:880px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .hero, .service-grid { grid-template-columns:1fr; } }
+  @media (max-width:880px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .nav-inner { flex-wrap:nowrap; } .nav-toggle { display:inline-flex; } .nav-menu { display:none; position:absolute; top:calc(100% + 12px); left:20px; right:20px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); flex-direction:column; align-items:stretch; gap:18px; } nav.is-open .nav-menu { display:flex; } .nav-links { flex-direction:column; gap:16px; } .nav-cta { width:100%; text-align:center; } .hero, .service-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 <nav>
   <div class="nav-inner">
     <a class="brand" href="index.html"><img src="hex-favicon.png" alt="HBK"><span>HBK Customs Inc.</span></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="packages.html">Packages</a>
-      <a href="process.html">Process</a>
-      <a href="industries.html">Industries</a>
-      <a href="about.html">About</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="packages.html">Packages</a>
+        <a href="process.html">Process</a>
+        <a href="industries.html">Industries</a>
+        <a href="about.html">About</a>
+      </div>
+      <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
     </div>
-    <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
   </div>
 </nav>
 
@@ -156,5 +166,30 @@
     </div>
   </div>
 </footer>
+<script>
+  (function () {
+    const nav = document.querySelector('nav');
+    const toggle = nav ? nav.querySelector('.nav-toggle') : null;
+    const menu = nav ? nav.querySelector('.nav-menu') : null;
+    if (!nav || !toggle || !menu) return;
+    const closeMenu = () => {
+      nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      document.body.classList.toggle('nav-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }());
+</script>
 </body>
 </html>
