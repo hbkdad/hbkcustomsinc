@@ -13,6 +13,8 @@ const leadFollowupDue = document.getElementById("lead-followup-due");
 const leadQuotesMonth = document.getElementById("lead-quotes-month");
 const leadWonMonth = document.getElementById("lead-won-month");
 const leadCloseRate = document.getElementById("lead-close-rate");
+const leadQuotedValue = document.getElementById("lead-quoted-value");
+const leadWonValue = document.getElementById("lead-won-value");
 const statusFilter = document.getElementById("filter-status");
 const tradeFilter = document.getElementById("filter-trade");
 const searchFilter = document.getElementById("filter-search");
@@ -71,6 +73,19 @@ function parseLeadDate(value) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
+function parseLeadAmount(value) {
+  const amount = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(amount) ? amount : 0;
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
+    maximumFractionDigits: 0
+  }).format(value);
+}
+
 function computeStats(leads) {
   const today = startOfToday();
   const monthKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}`;
@@ -81,12 +96,16 @@ function computeStats(leads) {
   let wonMonth = 0;
   let totalQuoted = 0;
   let totalWon = 0;
+  let quotedValue = 0;
+  let wonValue = 0;
 
   for (const lead of leads) {
     const status = lead.lead_status || "new";
     const createdAt = parseLeadDate(lead.created_at);
     const contactedOn = parseLeadDate(lead.contacted_on);
     const quotedOn = lead.quoted_on || "";
+    const quoteAmount = parseLeadAmount(lead.quote_value);
+    const wonAmount = parseLeadAmount(lead.won_value);
 
     if (status === "new") {
       newCount += 1;
@@ -106,10 +125,12 @@ function computeStats(leads) {
 
     if (quotedOn) {
       totalQuoted += 1;
+      quotedValue += quoteAmount;
     }
 
     if (status === "won") {
       totalWon += 1;
+      wonValue += wonAmount || quoteAmount;
       const wonDate = quotedOn || lead.contacted_on || lead.created_at || "";
       if (String(wonDate).startsWith(monthKey)) {
         wonMonth += 1;
@@ -119,7 +140,7 @@ function computeStats(leads) {
 
   const closeRate = totalQuoted > 0 ? `${Math.round((totalWon / totalQuoted) * 100)}%` : "0%";
 
-  return { newCount, followupDue, quotesMonth, wonMonth, closeRate };
+  return { newCount, followupDue, quotesMonth, wonMonth, closeRate, quotedValue, wonValue };
 }
 
 function filteredLeads() {
@@ -174,6 +195,8 @@ function renderLeads(leads) {
     const currentStatus = lead.lead_status || "new";
     const contactedOn = lead.contacted_on || "";
     const quotedOn = lead.quoted_on || "";
+    const quoteValue = lead.quote_value ?? "";
+    const wonValue = lead.won_value ?? "";
     const timelineMeta = [];
     if (contactedOn) {
       timelineMeta.push(`<span>Contacted ${contactedOn}</span>`);
@@ -220,6 +243,16 @@ function renderLeads(leads) {
             <input type="date" data-lead-quoted="${lead.id}" value="${quotedOn}">
           </label>
         </div>
+        <div class="manage-grid">
+          <label class="manage-field">
+            <span>Quote Value (CAD)</span>
+            <input type="number" min="0" step="0.01" data-lead-quote-value="${lead.id}" value="${quoteValue}">
+          </label>
+          <label class="manage-field">
+            <span>Won Value (CAD)</span>
+            <input type="number" min="0" step="0.01" data-lead-won-value="${lead.id}" value="${wonValue}">
+          </label>
+        </div>
         <label class="manage-field manage-notes">
           <span>Internal Notes</span>
           <textarea data-lead-notes="${lead.id}" placeholder="Private follow-up notes, next step, quote details...">${lead.internal_notes || ""}</textarea>
@@ -244,6 +277,8 @@ function renderDashboard() {
   leadQuotesMonth.textContent = String(stats.quotesMonth);
   leadWonMonth.textContent = String(stats.wonMonth);
   leadCloseRate.textContent = stats.closeRate;
+  leadQuotedValue.textContent = formatCurrency(stats.quotedValue);
+  leadWonValue.textContent = formatCurrency(stats.wonValue);
   renderLeads(filteredLeads());
 }
 
@@ -259,10 +294,12 @@ async function saveLead(id) {
   const statusField = document.querySelector(`[data-lead-status="${id}"]`);
   const contactedField = document.querySelector(`[data-lead-contacted="${id}"]`);
   const quotedField = document.querySelector(`[data-lead-quoted="${id}"]`);
+  const quoteValueField = document.querySelector(`[data-lead-quote-value="${id}"]`);
+  const wonValueField = document.querySelector(`[data-lead-won-value="${id}"]`);
   const notesField = document.querySelector(`[data-lead-notes="${id}"]`);
   const saveButton = document.querySelector(`[data-lead-save="${id}"]`);
 
-  if (!code || !statusField || !contactedField || !quotedField || !notesField || !saveButton) {
+  if (!code || !statusField || !contactedField || !quotedField || !quoteValueField || !wonValueField || !notesField || !saveButton) {
     return;
   }
 
@@ -280,6 +317,8 @@ async function saveLead(id) {
         leadStatus: statusField.value,
         contactedOn: contactedField.value,
         quotedOn: quotedField.value,
+        quoteValue: quoteValueField.value,
+        wonValue: wonValueField.value,
         internalNotes: notesField.value
       })
     });
@@ -295,6 +334,8 @@ async function saveLead(id) {
       lead.lead_status = statusField.value;
       lead.contacted_on = data.contactedOn || "";
       lead.quoted_on = data.quotedOn || "";
+      lead.quote_value = data.quoteValue;
+      lead.won_value = data.wonValue;
       lead.internal_notes = notesField.value;
     }
 

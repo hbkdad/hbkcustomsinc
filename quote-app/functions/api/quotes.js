@@ -17,6 +17,20 @@ function normalizeDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(cleaned) ? cleaned : "";
 }
 
+function normalizeAmount(value) {
+  const cleaned = clean(value).replaceAll(",", "");
+  if (!cleaned) {
+    return null;
+  }
+
+  const amount = Number(cleaned);
+  if (!Number.isFinite(amount) || amount < 0) {
+    return null;
+  }
+
+  return Math.round(amount * 100) / 100;
+}
+
 async function triggerNotification(env, record) {
   if (!env.NOTIFIER || !env.NOTIFIER_SHARED_SECRET) {
     return { ok: false, skipped: true };
@@ -96,7 +110,9 @@ export async function onRequestGet(context) {
       lead_status,
       internal_notes,
       contacted_on,
-      quoted_on
+      quoted_on,
+      quote_value,
+      won_value
     FROM quotes
     ORDER BY created_at DESC
     LIMIT 100`
@@ -158,8 +174,10 @@ export async function onRequestPost({ request, env }) {
       lead_status,
       internal_notes,
       contacted_on,
-      quoted_on
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      quoted_on,
+      quote_value,
+      won_value
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).bind(
     id,
     createdAt,
@@ -178,7 +196,9 @@ export async function onRequestPost({ request, env }) {
     "new",
     "",
     "",
-    ""
+    "",
+    null,
+    null
   ).run();
 
   const notification = await triggerNotification(env, record);
@@ -208,6 +228,8 @@ export async function onRequestPatch({ request, env }) {
   const internalNotes = clean(body.internalNotes);
   let contactedOn = normalizeDate(body.contactedOn);
   let quotedOn = normalizeDate(body.quotedOn);
+  let quoteValue = normalizeAmount(body.quoteValue);
+  let wonValue = normalizeAmount(body.wonValue);
   const allowedStatuses = new Set(["new", "follow-up", "quoted", "won", "closed"]);
 
   if (!id) {
@@ -226,15 +248,21 @@ export async function onRequestPatch({ request, env }) {
     quotedOn = new Date().toISOString().slice(0, 10);
   }
 
+  if (leadStatus === "won" && wonValue === null && quoteValue !== null) {
+    wonValue = quoteValue;
+  }
+
   const result = await env.QUOTE_DB.prepare(
     `UPDATE quotes
-    SET lead_status = ?, internal_notes = ?, contacted_on = ?, quoted_on = ?
+    SET lead_status = ?, internal_notes = ?, contacted_on = ?, quoted_on = ?, quote_value = ?, won_value = ?
     WHERE id = ?`
   ).bind(
     leadStatus,
     internalNotes,
     contactedOn,
     quotedOn,
+    quoteValue,
+    wonValue,
     id
   ).run();
 
@@ -252,6 +280,8 @@ export async function onRequestPatch({ request, env }) {
     leadStatus,
     internalNotes,
     contactedOn,
-    quotedOn
+    quotedOn,
+    quoteValue,
+    wonValue
   });
 }
