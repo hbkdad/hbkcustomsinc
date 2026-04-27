@@ -1067,16 +1067,57 @@
     .nav-logo { gap: 10px; }
     .nav-logo .nav-mark { height: 32px; width: 32px; }
     .nav-logo .nav-wordmark { height: 28px; }
-    section { padding: 80px 20px; }
-    .hero { padding: 100px 20px 60px; }
+    section { padding: 60px 20px; }
+    .hero { min-height: auto; padding: 92px 20px 44px; }
     .hero-brand .hero-hex { width: 62px; height: 62px; left: 12px; }
-    .hero-stats { gap: 28px; flex-wrap: wrap; }
-    .why-grid, .quote-inner, .proof-card, .proof-preview-grid, .recent-grid, .founder-card, .trust-grid { grid-template-columns: 1fr; gap: 40px; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-top { flex-direction: column; }
-    .footer-support { flex-direction: column; align-items: flex-start; }
-    .packages-table { font-size: 12px; }
+    .hero h1 { font-size: clamp(52px, 15vw, 78px); margin-bottom: 20px; }
+    .hero-sub { font-size: 15px; margin-bottom: 28px; }
+    .hero-actions { gap: 12px; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 14px 20px; }
+    .startup-note { margin-top: 22px; padding: 14px 16px; }
+    .startup-note p { font-size: 13px; line-height: 1.65; }
+    .trust-strip { gap: 8px; margin-top: 18px; }
+    .trust-pill { padding: 8px 11px; font-size: 10px; letter-spacing: 1.5px; }
+    .hero-stats { gap: 18px; flex-wrap: wrap; margin-top: 28px; padding-top: 20px; }
+    .hero-stats > div { min-width: 120px; }
+    .hero-stats > div:nth-child(n+4) { display: none; }
+    .section-intro { font-size: 15px; }
+    .services-header { margin-bottom: 32px; }
+    .service-card { padding: 28px 22px; }
+    .niches-inner { margin-top: 36px; }
+    .local-note { margin-top: 20px; padding: 14px 16px; }
+    .recent-grid, .proof-card, .founder-card, .why-grid, .quote-inner, .trust-grid { grid-template-columns: 1fr; gap: 28px; }
+    .recent-grid { margin-top: 20px; }
+    .recent-card { padding: 18px; gap: 12px; }
+    .recent-card:nth-child(3) { display: none; }
+    .proof-card { margin-top: 28px; padding: 20px; }
+    .proof-copy p { font-size: 14px; line-height: 1.65; }
+    .proof-meta { gap: 8px; margin-top: 16px; }
+    .proof-meta span { padding: 8px 11px; font-size: 10px; }
+    .proof-actions { gap: 10px; margin-top: 18px; }
+    .proof-actions .btn-primary, .proof-actions .btn-outline { width: 100%; }
+    .proof-preview img:first-child { max-height: 180px; }
+    .proof-preview-grid { display: none; }
+    .founder-card { margin-top: 24px; padding: 20px; }
+    .founder-badge { padding: 18px; }
+    .founder-mark { width: 56px; height: 56px; font-size: 28px; }
+    .founder-copy h3 { font-size: 30px; margin-bottom: 12px; }
+    .founder-point { gap: 12px; padding-top: 12px; }
+    .founder-point strong { min-width: 86px; }
+    .founder-point:nth-child(n+3) { display: none; }
+    .why-grid { margin-top: 36px; }
+    .packages-table { font-size: 12px; margin-top: 36px; }
     .packages-table th, .packages-table td { padding: 12px 10px; }
+    .quote-inner { margin-top: 32px; gap: 24px; }
+    .quote-app-card { padding: 20px; }
+    .quote-points { gap: 14px; }
+    .quote-app-actions { gap: 10px; }
+    .quote-app-actions .btn-primary, .quote-app-actions .btn-outline { width: 100%; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; margin-bottom: 20px; gap: 18px; }
+    .footer-top .footer-links { display: none; }
+    .footer-support { display: none; }
+    .footer-bottom { gap: 8px; font-size: 11px; }
   }
 </style>
 </head>
