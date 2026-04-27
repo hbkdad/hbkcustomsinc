@@ -515,6 +515,136 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 26px;
+  }
+  .recent-card {
+    border: 1px solid #20252b;
+    border-radius: 24px;
+    padding: 24px;
+    background: rgba(8, 12, 18, 0.7);
+    display: grid;
+    gap: 16px;
+  }
+  .recent-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1.5px;
+    line-height: 0.95;
+    color: var(--white);
+  }
+  .recent-card p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light);
+  }
+  .recent-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .recent-tags span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid #26303a;
+    background: rgba(255,255,255,0.03);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .recent-link {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .recent-link:hover { color: #00d0f5; }
+
+  /* FOUNDER */
+  #founder {
+    background: var(--black);
+    border-top: 1px solid #181818;
+  }
+  .founder-card {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: 32px;
+    padding: 30px;
+    border: 1px solid #20252b;
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(15, 19, 24, 0.96), rgba(8, 12, 18, 0.94)),
+      radial-gradient(circle at top left, rgba(0,180,216,0.08), transparent 32%);
+    box-shadow: 0 30px 90px rgba(0,0,0,0.2);
+    align-items: start;
+  }
+  .founder-badge {
+    border: 1px solid #26303a;
+    border-radius: 24px;
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    display: grid;
+    gap: 16px;
+  }
+  .founder-mark {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    border: 1px solid rgba(0,180,216,0.25);
+    background: rgba(0,180,216,0.08);
+  }
+  .founder-badge p,
+  .founder-copy p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light);
+  }
+  .founder-copy h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .founder-points {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .founder-point {
+    display: flex;
+    gap: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #1d232b;
+  }
+  .founder-point strong {
+    min-width: 110px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .founder-point span {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light);
+  }
 
   /* WHY */
   #why { background: var(--steel); }
@@ -847,7 +977,7 @@
     .hero { padding: 100px 20px 60px; }
     .hero-brand .hero-hex { width: 62px; height: 62px; left: 12px; }
     .hero-stats { gap: 28px; flex-wrap: wrap; }
-    .why-grid, .quote-inner, .proof-card, .proof-preview-grid { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid, .quote-inner, .proof-card, .proof-preview-grid, .recent-grid, .founder-card { grid-template-columns: 1fr; gap: 40px; }
     .form-row { grid-template-columns: 1fr; }
     .footer-top { flex-direction: column; }
     .footer-support { flex-direction: column; align-items: flex-start; }
@@ -1011,19 +1141,51 @@
 
 <!-- PROOF -->
 <section id="proof">
-  <div class="section-tag">Proof of Work</div>
-  <h2>JTR Custom Works Case Study</h2>
-  <p class="section-intro">A trade-focused concept rebuild for an industrial services company in Timmins. Cleaned up structure, stronger service presentation, and a more credible first impression without losing the field-first tone.</p>
+  <div class="section-tag">Recent Work</div>
+  <h2>Proof That Feels Real</h2>
+  <p class="section-intro">HBK is still early, so the goal is honest proof instead of inflated agency claims. Here’s the kind of trade-focused work and systems already taking shape.</p>
+  <div class="recent-grid">
+    <article class="recent-card">
+      <div class="recent-tags">
+        <span>Timmins</span>
+        <span>Industrial Services</span>
+        <span>Live Demo</span>
+      </div>
+      <h3>JTR Custom Works</h3>
+      <p>A trade-focused concept rebuild for an industrial services company in Timmins, with a cleaner service structure, stronger first impression, and a live demo you can actually open.</p>
+      <a href="https://jtrcustom.netlify.app/" class="recent-link" target="_blank" rel="noreferrer">View live demo</a>
+    </article>
+    <article class="recent-card">
+      <div class="recent-tags">
+        <span>Cloudflare</span>
+        <span>Lead Intake</span>
+        <span>Live System</span>
+      </div>
+      <h3>HBK Quote Intake App</h3>
+      <p>The intake app behind HBK itself: mobile-friendly quote capture, automatic acknowledgment emails, internal lead tracking, and a founder-friendly dashboard for follow-up.</p>
+      <a href="https://app.hbkcustoms.ca/" class="recent-link">Open live app</a>
+    </article>
+    <article class="recent-card">
+      <div class="recent-tags">
+        <span>Northern Ontario</span>
+        <span>SEO Buildout</span>
+        <span>Trade Niche</span>
+      </div>
+      <h3>Trade-Ready Site Framework</h3>
+      <p>HBK’s own website is being built as proof too: service pages, local positioning, quote routing, and a founder-led message aimed at welders, millwrights, contractors, and industrial shops.</p>
+      <a href="northern-ontario-web-design.html" class="recent-link">See local positioning</a>
+    </article>
+  </div>
   <div class="proof-card">
     <div class="proof-copy">
       <p>
-        This is the kind of work HBK is built to do: take a welding, industrial, or contractor business with solid real-world capability and turn it into a website that feels more current, more trustworthy, and easier to contact.
+        The clearest proof point right now is JTR: a live concept demo built for an industrial services company in Timmins. It shows exactly where HBK fits best: real trade businesses that already know their craft, but need a website that looks stronger, feels more current, and qualifies better leads.
       </p>
       <div class="proof-meta">
         <span>Timmins, Ontario</span>
         <span>Industrial Services</span>
         <span>Concept Rebuild</span>
-        <span>Trade-First Positioning</span>
+        <span>Live Demo Available</span>
       </div>
       <div class="proof-actions">
         <a href="jtr-custom-works-case-study.html" class="btn-primary">View Case Study</a>
@@ -1036,6 +1198,37 @@
       <div class="proof-preview-grid">
         <img src="assets/case-studies/jtr/welding.jpg" alt="JTR Custom Works welding image">
         <img src="assets/case-studies/jtr/millwright.jpg" alt="JTR Custom Works millwright image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="section-tag">Founder</div>
+  <h2>Built By Someone In The Trade World</h2>
+  <p class="section-intro">HBK stands out most when it feels like what it actually is: a startup founded by a working welder in Timmins who understands how trade businesses operate day to day.</p>
+  <div class="founder-card">
+    <div class="founder-badge">
+      <div class="founder-mark">HBK</div>
+      <p>Founder-led from Timmins, Ontario. Built around Northern Ontario trades, industrial service companies, and contractors who want a sharper digital presence without agency fluff.</p>
+    </div>
+    <div class="founder-copy">
+      <h3>Welder-founded. Trade-focused. Digital by design.</h3>
+      <p>HBK did not start from a generic marketing background. It started from real trade work, real jobsite context, and seeing how many strong companies still look weak online. That perspective is the advantage.</p>
+      <div class="founder-points">
+        <div class="founder-point">
+          <strong>Real Context</strong>
+          <span>Quotes, crews, shop work, field work, seasonality, and industrial trust signals all shape how the sites are planned.</span>
+        </div>
+        <div class="founder-point">
+          <strong>Local Fit</strong>
+          <span>HBK is based in Timmins and built with Northern Ontario contractors, welders, millwrights, and industrial operators in mind first.</span>
+        </div>
+        <div class="founder-point">
+          <strong>Startup Honest</strong>
+          <span>No fake scale, no inflated agency language, and no bloated process. Just clear work, direct communication, and digital systems that help bring in better leads.</span>
+        </div>
       </div>
     </div>
   </div>
