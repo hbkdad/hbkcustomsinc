@@ -410,6 +410,39 @@
     line-height: 1.7;
     font-weight: 300;
   }
+  .mobile-accordion-toggle {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    border: 1px solid #26303a;
+    background: rgba(255,255,255,0.03);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+  }
+  .mobile-accordion-toggle::after {
+    content: '+';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blue);
+    font-size: 18px;
+    line-height: 1;
+  }
+  .mobile-accordion-toggle[aria-expanded="true"]::after {
+    content: '-';
+  }
+  .mobile-accordion-content {
+    display: block;
+  }
 
   /* SERVICES */
   #services { background: var(--steel); }
@@ -1087,6 +1120,21 @@
     .niches-inner { margin-top: 36px; }
     .local-note { margin-top: 20px; padding: 14px 16px; }
     .recent-grid, .proof-card, .founder-card, .why-grid, .quote-inner, .trust-grid { grid-template-columns: 1fr; gap: 28px; }
+    .mobile-accordion-toggle { display: block; }
+    .mobile-accordion-content {
+      display: grid;
+      gap: 24px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.2s ease;
+    }
+    .mobile-accordion-content.is-open {
+      max-height: 2200px;
+      opacity: 1;
+      margin-top: 22px;
+    }
     .recent-grid { margin-top: 20px; }
     .recent-card { padding: 18px; gap: 12px; }
     .recent-card:nth-child(3) { display: none; }
@@ -1288,6 +1336,8 @@
   <div class="section-tag">Recent Work</div>
   <h2>Proof That Feels Real</h2>
   <p class="section-intro">HBK is still early, so the goal is honest proof instead of inflated agency claims. Here’s the kind of trade-focused work and systems already taking shape.</p>
+  <button class="mobile-accordion-toggle" type="button" aria-expanded="false" data-accordion-target="proof-accordion">Show proof examples</button>
+  <div class="mobile-accordion-content" id="proof-accordion">
   <div class="recent-grid">
     <article class="recent-card">
       <div class="recent-tags">
@@ -1345,6 +1395,7 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- FOUNDER -->
@@ -1352,6 +1403,8 @@
   <div class="section-tag">Founder</div>
   <h2>Built By Someone In The Trade World</h2>
   <p class="section-intro">HBK stands out most when it feels like what it actually is: a startup founded by a working welder in Timmins who understands how trade businesses operate day to day.</p>
+  <button class="mobile-accordion-toggle" type="button" aria-expanded="false" data-accordion-target="founder-accordion">Show founder story</button>
+  <div class="mobile-accordion-content" id="founder-accordion">
   <div class="founder-card">
     <div class="founder-badge">
       <div class="founder-mark">HBK</div>
@@ -1379,6 +1432,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -1683,6 +1737,41 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') closeMenu();
     });
+  }());
+
+  (function () {
+    const toggles = document.querySelectorAll('.mobile-accordion-toggle');
+    if (!toggles.length) return;
+    const isMobile = () => window.innerWidth <= 768;
+    const syncAccordions = () => {
+      toggles.forEach((toggle) => {
+        const targetId = toggle.getAttribute('data-accordion-target');
+        const panel = targetId ? document.getElementById(targetId) : null;
+        if (!panel) return;
+        if (!isMobile()) {
+          panel.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+          return;
+        }
+        if (!panel.dataset.mobileInitialized) {
+          panel.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.dataset.mobileInitialized = 'true';
+        }
+      });
+    };
+    toggles.forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        if (!isMobile()) return;
+        const targetId = toggle.getAttribute('data-accordion-target');
+        const panel = targetId ? document.getElementById(targetId) : null;
+        if (!panel) return;
+        const isOpen = panel.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+    window.addEventListener('resize', syncAccordions);
+    syncAccordions();
   }());
 
   // Smooth scroll spy
