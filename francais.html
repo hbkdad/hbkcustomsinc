@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HBK Customs Inc. | Lead Intake Systems</title>
-<meta name="description" content="HBK Customs Inc. sets up quote form automation, lead delivery, auto-response systems, and intake structure for contractors and trade companies.">
-<link rel="canonical" href="https://hbkcustoms.ca/quote-form-automation.html">
+<title>HBK Customs Inc. | Services en français</title>
+<meta name="description" content="HBK Customs Inc. offre des services de sites web, d'image de marque et de systèmes de demandes de soumission pour les entreprises de métiers à Timmins et dans le Nord de l'Ontario.">
+<link rel="canonical" href="https://hbkcustoms.ca/francais.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
@@ -34,16 +34,16 @@
   h1 { font-size:clamp(58px,9vw,110px); margin-bottom:22px; }
   h2 { font-size:clamp(40px,5vw,72px); margin-bottom:18px; }
   h3 { font-size:30px; margin-bottom:12px; }
-  p { color:var(--light); max-width:760px; }
+  p, li { color:var(--light); max-width:760px; }
   .hero { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,360px); gap:28px; align-items:end; }
-  .hero-card, .item { border:1px solid var(--line); background:rgba(15,24,34,0.82); border-radius:28px; box-shadow:0 28px 90px rgba(0,0,0,0.22); }
-  .hero-card, .item { padding:28px; }
-  .trust-row, .hero-actions, .list, .page-links { display:flex; gap:14px; flex-wrap:wrap; margin-top:24px; }
+  .hero-card, .card { border:1px solid var(--line); background:rgba(15,24,34,0.82); border-radius:28px; box-shadow:0 28px 90px rgba(0,0,0,0.22); }
+  .hero-card, .card { padding:28px; }
+  .trust-row, .hero-actions, .card-grid, .page-links { display:flex; gap:14px; flex-wrap:wrap; margin-top:24px; }
   .trust-pill { padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--light); font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
-  .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-  .item strong { display:block; margin-bottom:8px; font-family:'Barlow Condensed',sans-serif; letter-spacing:1px; text-transform:uppercase; color:var(--blue); }
+  .card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:36px; }
+  ul { padding-left:20px; }
   .footer-copy { color:var(--mid); max-width:720px; }
-  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .hero, .list { grid-template-columns:1fr; } }
+  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .hero, .card-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -54,7 +54,6 @@
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="packages.html">Packages</a>
-      <a href="process.html">Process</a>
       <a href="industries.html">Industries</a>
       <a href="about.html">About</a>
     </div>
@@ -65,40 +64,66 @@
 <main class="page">
   <div class="hero">
     <div>
-      <div class="eyebrow">Lead Systems</div>
-      <h1>Lead intake that makes a trade business feel more organized from day one.</h1>
-      <p>HBK helps trade businesses move beyond a weak contact form by setting up smarter quote intake, better lead delivery, and simple auto-response systems that improve the first client touchpoint.</p>
+      <div class="eyebrow">Français</div>
+      <h1>Services numériques pour les entreprises de métiers à Timmins et dans le Nord de l'Ontario.</h1>
+      <p>HBK Customs Inc. aide les soudeurs, entrepreneurs, millwrights et entreprises de services industriels à présenter leur compagnie d'une façon plus professionnelle en ligne, avec une communication directe et un processus simple.</p>
       <div class="trust-row">
-        <span class="trust-pill">Timmins-Based</span>
-        <span class="trust-pill">Serving Northern Ontario</span>
-        <span class="trust-pill">English / French Service</span>
+        <span class="trust-pill">Basé à Timmins</span>
+        <span class="trust-pill">Nord de l'Ontario</span>
+        <span class="trust-pill">Service en français</span>
       </div>
       <div class="hero-actions">
-        <a class="btn" href="https://app.hbkcustoms.ca/">Ask About Lead Setup</a>
-        <a class="btn-outline" href="packages.html">View Pricing</a>
+        <a class="btn" href="https://app.hbkcustoms.ca/">Commencer une demande</a>
+        <a class="btn-outline" href="services.html">View English Services</a>
       </div>
     </div>
     <div class="hero-card">
-      <div class="eyebrow">Why It Matters</div>
-      <h3>Better intake means better first impressions.</h3>
-      <p>When the quote flow is cleaner, prospects get a faster acknowledgment, you get better project details, and the business looks more established right away.</p>
+      <div class="eyebrow">Ce que HBK offre</div>
+      <h3>Clair, direct et axé sur les métiers.</h3>
+      <p>Sites web, structure de demandes de soumission, image de marque et systèmes de contact pensés pour les entreprises qui veulent paraître plus solides et mieux organisées.</p>
     </div>
   </div>
 
-  <div class="list">
-    <div class="item"><strong>Missed Inquiries</strong><p>Quote requests should land in the right inbox with the right information, not get buried or lost.</p></div>
-    <div class="item"><strong>Weak Lead Details</strong><p>Add budget, timing, trade, and project notes so reviews are faster and more useful.</p></div>
-    <div class="item"><strong>Slow First Response</strong><p>Set up an instant acknowledgment so prospects know their request went through immediately.</p></div>
-    <div class="item"><strong>Future App Readiness</strong><p>Build the intake flow now so it can feed a custom proposal, dashboard, or client portal later.</p></div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Sites web</h3>
+      <p>Sites modernes et orientés vers les demandes de soumission pour les entreprises de services et de métiers.</p>
+    </div>
+    <div class="card">
+      <h3>Systèmes de contact</h3>
+      <p>Formulaires de soumission, réponses automatiques et structure d'accueil plus professionnelle.</p>
+    </div>
+    <div class="card">
+      <h3>Image locale</h3>
+      <p>Un message plus fort pour Timmins et le Nord de l'Ontario, avec service offert en anglais ou en français.</p>
+    </div>
+  </div>
+
+  <div class="hero" style="margin-top:42px;">
+    <div class="hero-card">
+      <div class="eyebrow">Contact</div>
+      <h3>Parlons de votre projet</h3>
+      <p>Vous pouvez utiliser l'application de demande en ligne ou contacter HBK directement.</p>
+      <ul>
+        <li>Courriel: <a href="mailto:hello@hbkcustoms.ca">hello@hbkcustoms.ca</a></li>
+        <li>Téléphone: <a href="tel:+17053657429">705-365-7429</a></li>
+        <li>Réponse visée: dans les 48 heures</li>
+      </ul>
+    </div>
+    <div class="hero-card">
+      <div class="eyebrow">Note locale</div>
+      <h3>Un service en croissance, mais intentionnel.</h3>
+      <p>HBK est une jeune entreprise, donc le message reste honnête: communication directe, portée locale, prix clairs et travail conçu pour les vraies entreprises de métiers.</p>
+    </div>
   </div>
 </main>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-copy">HBK Customs Inc. builds lead systems for trade-focused sales flow, faster follow-up, and stronger client first impressions.</div>
+    <div class="footer-copy">HBK Customs Inc. offre un service local, bilingue et orienté vers les résultats pour les entreprises de métiers du Nord de l'Ontario.</div>
     <div class="page-links">
-      <a href="services.html">Services</a>
-      <a href="francais.html">Français</a>
+      <a href="index.html">Home</a>
+      <a href="services.html">English</a>
       <a href="https://app.hbkcustoms.ca/">Start Review</a>
     </div>
   </div>
