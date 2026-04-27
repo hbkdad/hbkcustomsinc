@@ -21,15 +21,26 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at top right, rgba(0,180,216,0.16), transparent 25%),
-        linear-gradient(180deg, #080808, #10151b 55%, #0c1116);
+      background: #080808;
       color: var(--white);
       font-family: "Barlow", sans-serif;
       line-height: 1.7;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+        repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+        radial-gradient(ellipse 80% 60% at 60% 18%, rgba(0,180,216,0.12) 0%, rgba(0,180,216,0.05) 32%, transparent 72%),
+        linear-gradient(180deg, #080808, #10151b 55%, #0c1116);
     }
     a { color: inherit; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
     .back-link {
       display: inline-flex;
       margin-top: 28px;

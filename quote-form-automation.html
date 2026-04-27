@@ -12,9 +12,22 @@
 <style>
   :root { --black:#080808; --steel:#1a1a1a; --mid:#888; --light:#c8c8c8; --white:#f0eeea; --blue:#00b4d8; }
   * { box-sizing:border-box; }
-  body { margin:0; background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; line-height:1.7; }
-  nav, footer { padding:24px 40px; border-bottom:1px solid #202020; }
+  body { margin:0; background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; line-height:1.7; position:relative; }
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+      repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+      radial-gradient(ellipse 80% 60% at 60% 18%, rgba(0,180,216,0.12) 0%, rgba(0,180,216,0.04) 32%, transparent 72%),
+      linear-gradient(180deg,#080808,#10151b 55%,#0c1116);
+  }
+  nav, footer { padding:24px 40px; border-bottom:1px solid #202020; background:rgba(8,12,18,0.9); backdrop-filter:blur(10px); }
   footer { border-top:1px solid #202020; border-bottom:none; color:var(--mid); }
+  nav, main, footer { position:relative; z-index:1; }
   .nav-inner, .footer-inner, .page { max-width:1100px; margin:0 auto; }
   .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; }
   .nav-links { display:flex; gap:20px; flex-wrap:wrap; }
