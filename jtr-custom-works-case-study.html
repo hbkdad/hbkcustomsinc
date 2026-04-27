@@ -40,22 +40,72 @@
         linear-gradient(180deg, #080808, #10151b 55%, #0c1116);
     }
     a { color: inherit; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-    .back-link {
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+      padding: 0 40px;
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      height: 100%;
+      flex-wrap: wrap;
+    }
+    .brand {
       display: inline-flex;
-      margin-top: 28px;
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
-      color: var(--light);
       font-family: "Barlow Condensed", sans-serif;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-size: 12px;
     }
+    .brand img { width: 38px; height: 38px; }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+    .nav-cta {
+      display: inline-block;
+      text-decoration: none;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #000;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
     .hero {
-      padding: 48px 0 72px;
+      padding: 120px 0 72px;
     }
     .eyebrow {
       color: var(--blue);
@@ -201,6 +251,9 @@
       font-size: 15px;
     }
     @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-inner { justify-content: center; }
+      .nav-links { justify-content: center; gap: 18px; }
       .hero-grid,
       .section-grid,
       .visual-grid,
@@ -212,9 +265,21 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="back-link" href="https://hbkcustoms.ca/">Back to HBK Customs Inc.</a>
-  </div>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><img src="hex-favicon.png" alt="HBK"><span>HBK Customs Inc.</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="packages.html">Packages</a>
+        <a href="process.html">Process</a>
+        <a href="industries.html">Industries</a>
+        <a href="about.html">About</a>
+        <a href="jtr-custom-works-case-study.html" class="active">Case Study</a>
+      </div>
+      <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
+    </div>
+  </nav>
 
   <section class="hero">
     <div class="wrap">
