@@ -22,8 +22,9 @@
   .nav-inner, .footer-inner, .page { max-width:1180px; margin:0 auto; }
   .nav-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; width:100%; height:100%; }
   .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
-  .brand { display:inline-flex; align-items:center; gap:12px; font-family:'Barlow Condensed',sans-serif; letter-spacing:2px; text-transform:uppercase; }
-  .brand img { width:38px; height:38px; }
+  .brand { display:inline-flex; align-items:center; gap:12px; }
+  .brand-mark { width:38px; height:38px; }
+  .brand-wordmark { height:24px; width:auto; }
   .nav-menu { display:flex; align-items:center; gap:28px; }
   .nav-links { display:flex; gap:36px; flex-wrap:wrap; }
   .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--mid); }
@@ -59,7 +60,7 @@
 <body>
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="hex-favicon.png" alt="HBK"><span>HBK Customs Inc.</span></a>
+    <a class="brand" href="index.html"><img class="brand-mark" src="hbk-icon.svg" alt="HBK icon"><img class="brand-wordmark" src="hbk-transparent.svg" alt="HBK Customs Inc."></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     <div class="nav-menu">
       <div class="nav-links">
