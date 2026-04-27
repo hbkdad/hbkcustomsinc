@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>HBK compact mark</title>
+  <rect width="128" height="128" rx="28" fill="#0b0d10"/>
+  <g transform="translate(22 20)">
+    <polygon points="42,0 72,17 72,51 42,68 12,51 12,17" fill="none" stroke="#14a3b8" stroke-width="3.5"/>
+    <polygon points="42,13 61,24 61,45 42,56 23,45 23,24" fill="#14a3b8" opacity="0.16"/>
+    <rect x="32" y="21" width="6" height="28" fill="#14a3b8"/>
+    <rect x="46" y="21" width="6" height="28" fill="#14a3b8"/>
+    <rect x="32" y="32" width="20" height="6" fill="#14a3b8"/>
+    <line x1="42" y1="-7" x2="42" y2="4" stroke="#14a3b8" stroke-width="3.5" stroke-linecap="square"/>
+    <line x1="42" y1="64" x2="42" y2="75" stroke="#14a3b8" stroke-width="3.5" stroke-linecap="square"/>
+    <line x1="2" y1="34" x2="13" y2="34" stroke="#14a3b8" stroke-width="3.5" stroke-linecap="square"/>
+    <line x1="71" y1="34" x2="82" y2="34" stroke="#14a3b8" stroke-width="3.5" stroke-linecap="square"/>
+  </g>
+  <text x="64" y="108" text-anchor="middle" font-family="'Arial Black', 'Segoe UI', sans-serif" font-size="19" font-weight="900" letter-spacing="5" fill="#f3f0ea">HBK</text>
+</svg>
