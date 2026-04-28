@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForgeQuote by HBK Case Study | HBK Customs Inc.</title>
+  <meta name="description" content="See how HBK Customs Inc. turned ForgeQuote into a trade-focused software concept for field quoting, internal workflows, and contractor operations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0b0d10;
+      --steel: #14181d;
+      --panel: #171d24;
+      --line: rgba(255,255,255,0.08);
+      --light: #d2d6db;
+      --white: #f3f0ea;
+      --blue: #14a3b8;
+      --blue-soft: rgba(20,163,184,0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #080808;
+      color: var(--white);
+      font-family: "Barlow", sans-serif;
+      line-height: 1.7;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+        repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px),
+        radial-gradient(ellipse 80% 60% at 60% 18%, rgba(0,180,216,0.12) 0%, rgba(0,180,216,0.05) 32%, transparent 72%),
+        linear-gradient(180deg, #080808, #10151b 55%, #0c1116);
+    }
+    body.nav-open { overflow: hidden; }
+    a { color: inherit; }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+      padding: 0 40px;
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      height: 100%;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-mark { width: 38px; height: 38px; }
+    .brand-wordmark { height: 24px; width: auto; }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--white);
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--white);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    nav.is-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    nav.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    nav.is-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-cta {
+      display: inline-block;
+      text-decoration: none;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #000;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+    .hero { padding: 120px 0 72px; }
+    .eyebrow {
+      color: var(--blue);
+      font-family: "Barlow Condensed", sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 1.5px;
+      line-height: 0.96;
+    }
+    h1 { font-size: clamp(3.2rem, 9vw, 6.5rem); max-width: 11ch; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 18px; }
+    p { margin: 0; }
+    .hero-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 360px);
+      gap: 28px;
+      align-items: end;
+    }
+    .hero-copy p {
+      max-width: 62ch;
+      color: var(--light);
+      font-size: 1.06rem;
+    }
+    .hero-card, .section-card, .stack-card {
+      background: rgba(17,22,29,0.88);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    }
+    .hero-card ul, .deliverables ul, .lessons ul, .stack-card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--light);
+    }
+    .hero-card li + li,
+    .deliverables li + li,
+    .lessons li + li,
+    .stack-card li + li { margin-top: 8px; }
+    .section { padding: 0 0 72px; }
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .metric {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(17,22,29,0.88);
+      padding: 22px;
+      display: grid;
+      gap: 8px;
+    }
+    .metric strong {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.7rem;
+      line-height: 1;
+      color: var(--blue);
+      letter-spacing: 1.5px;
+    }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+    .cta a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-family: "Barlow Condensed", sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .cta-primary { background: var(--blue); color: #061015; }
+    .cta-secondary { border: 1px solid var(--line); color: var(--light); }
+    .cta-demo { border: 1px solid var(--blue); color: var(--blue); background: var(--blue-soft); }
+    @media (max-width: 980px) {
+      nav { padding: 0 20px; }
+      .nav-toggle { display: inline-flex; }
+      .nav-menu {
+        position: absolute;
+        top: 64px;
+        left: 20px;
+        right: 20px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(10,14,18,0.98);
+        box-shadow: 0 22px 50px rgba(0,0,0,0.28);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+      nav.is-open .nav-menu { display: flex; }
+      .nav-links {
+        flex-direction: column;
+        gap: 14px;
+      }
+      .nav-cta { width: 100%; text-align: center; }
+      .hero-grid,
+      .section-grid,
+      .metric-grid,
+      .stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="HBK Customs Inc. home">
+        <img class="brand-mark" src="hbk-icon.svg" alt="HBK icon">
+        <img class="brand-wordmark" src="hbk-transparent.svg" alt="HBK Customs Inc.">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="jtr-custom-works-case-study.html">JTR Case Study</a></li>
+          <li><a href="forgequote-case-study.html" class="active">ForgeQuote</a></li>
+        </ul>
+        <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Software Concept by HBK</p>
+      <h1>ForgeQuote Shows Where HBK Can Go Beyond Websites.</h1>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p>
+            ForgeQuote is an HBK-built software concept for field quoting, job scoping, PDF estimate generation,
+            and internal workflow support for welders, millwright crews, confined-space teams, mine rescue standby
+            contractors, shutdown crews, and industrial service companies. It exists as a proof-of-capability concept right now, but it points toward a
+            bigger category than brochure sites alone.
+          </p>
+          <div class="cta">
+            <a class="cta-primary" href="https://app.hbkcustoms.ca/">Start a Project</a>
+            <a class="cta-secondary" href="index.html#proof">Back to HBK Proof</a>
+            <a class="cta-secondary" href="mailto:hello@hbkcustoms.ca?subject=ForgeQuote%20Concept%20Inquiry">Ask About ForgeQuote</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="eyebrow">Project Snapshot</p>
+          <ul>
+            <li>Category: Trade software concept / internal operations app</li>
+            <li>Use case: Field estimates, structured scopes, PDF quotes, and workflow handoff</li>
+            <li>Best-fit audience: Welding, millwright, confined-space, mine rescue standby, industrial service, shutdown, maintenance, and contractor crews</li>
+            <li>Status: Reworked concept demo used as proof of capability for HBK</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-grid">
+        <div class="section-card deliverables">
+          <p class="eyebrow">What It Proves</p>
+          <h2>HBK can build structured internal tools, not just public-facing websites.</h2>
+          <ul>
+            <li>Trade-specific quoting flow with customer, site, environment, and scope capture</li>
+            <li>Line-item estimating with labour, materials, equipment, travel, and safety categories</li>
+            <li>Offline draft support for field use where signal is unreliable underground or in remote industrial environments</li>
+            <li>PDF output, auth, dashboard logic, and a working app shell instead of a static mockup</li>
+          </ul>
+        </div>
+        <div class="section-card lessons">
+          <p class="eyebrow">Why It Matters</p>
+          <h2>This is a stronger differentiator than another generic agency promise.</h2>
+          <ul>
+            <li>Most small trade web shops can sell websites, but far fewer can show a believable trade-tech product concept</li>
+            <li>ForgeQuote gives HBK a bridge into custom dashboards, portals, quoting systems, and internal workflow builds</li>
+            <li>It matches the founder story better because it comes from trade-world problems, not generic SaaS ideas</li>
+            <li>It gives industrial and contractor clients a reason to see HBK as a long-term systems partner</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <strong>Field</strong>
+          <span>designed around site visits, notes, measurements, and scope capture</span>
+        </div>
+        <div class="metric">
+          <strong>Quote</strong>
+          <span>focused on turning trade observations into structured estimates and PDFs</span>
+        </div>
+        <div class="metric">
+          <strong>Ops</strong>
+          <span>positioned as a foundation for broader workflow and job handoff tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Where It Could Go</p>
+      <h2>A realistic product path is niche-first, not every trade all at once.</h2>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3>Phase 1</h3>
+          <ul>
+            <li>Welding, millwright, confined-space, mine rescue standby, and industrial service quoting</li>
+            <li>Templates for shutdown, confined-space, mine rescue, repair, and breakdown work</li>
+            <li>Canadian tax logic, field-ready offline flow, and PDF outputs</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <h3>Phase 2</h3>
+          <ul>
+            <li>Approvals, change orders, customer sign-off, and crew handoff</li>
+            <li>Parts, labour-rate libraries, margin tracking, and production feedback</li>
+            <li>Better office-to-field continuity for growing contractors</li>
+          </ul>
+        </div>
+        <div class="stack-card">
+          <h3>Phase 3</h3>
+          <ul>
+            <li>Expansion into adjacent trades once one core wedge is proven</li>
+            <li>More reporting, scheduling, client portals, and repeat-job templates</li>
+            <li>A credible Canadian product brand instead of a thin all-trades promise</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-card">
+        <p class="eyebrow">HBK Angle</p>
+        <h2>ForgeQuote is best used as a wedge into custom trade software work right now.</h2>
+        <p style="color:var(--light);max-width:70ch;">
+          For HBK today, ForgeQuote is valuable even before it becomes a standalone product. It tells the market
+          that HBK can build custom quoting systems, operations dashboards, and internal trade tools. That makes
+          the website business more credible immediately, while still leaving room for a larger product play later.
+        </p>
+        <div class="cta">
+          <a class="cta-primary" href="https://app.hbkcustoms.ca/">Request an HBK Review</a>
+          <a class="cta-secondary" href="services.html">View Services</a>
+          <a class="cta-secondary" href="index.html#quote">Talk to HBK</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const nav = document.querySelector('nav');
+      const toggle = nav ? nav.querySelector('.nav-toggle') : null;
+      const menu = nav ? nav.querySelector('.nav-menu') : null;
+      if (!nav || !toggle || !menu) return;
+      const closeMenu = () => {
+        nav.classList.remove('is-open');
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      };
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        document.body.classList.toggle('nav-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 980) closeMenu();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+    }());
+  </script>
+</body>
+</html>
