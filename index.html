@@ -648,6 +648,12 @@
     text-decoration: none;
   }
   .recent-link:hover { color: #00d0f5; }
+  .recent-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-self: end;
+  }
 
   /* FOUNDER */
   #founder {
@@ -1132,13 +1138,12 @@
       transition: max-height 0.28s ease, opacity 0.2s ease, margin-top 0.2s ease;
     }
     .mobile-accordion-content.is-open {
-      max-height: 2200px;
+      max-height: 3200px;
       opacity: 1;
       margin-top: 22px;
     }
     .recent-grid { margin-top: 20px; }
     .recent-card { padding: 18px; gap: 12px; }
-    .recent-card:nth-child(3) { display: none; }
     .proof-card { margin-top: 28px; padding: 20px; }
     .proof-copy p { font-size: 14px; line-height: 1.65; }
     .proof-meta { gap: 8px; margin-top: 16px; }
@@ -1157,6 +1162,25 @@
     .why-grid { margin-top: 36px; }
     .packages-table { font-size: 12px; margin-top: 36px; }
     .packages-table th, .packages-table td { padding: 12px 10px; }
+    .packages-table,
+    .packages-table thead,
+    .packages-table tbody,
+    .packages-table tr,
+    .packages-table th,
+    .packages-table td {
+      display: block;
+      width: 100%;
+    }
+    .packages-table thead { display: none; }
+    .packages-table tr {
+      padding: 16px 0;
+      border-bottom: 1px solid #181818;
+    }
+    .packages-table tr:last-child { border-bottom: none; }
+    .packages-table td {
+      padding: 5px 0;
+      border-bottom: none;
+    }
     .quote-inner { margin-top: 32px; gap: 24px; }
     .quote-app-card { padding: 20px; }
     .quote-points { gap: 14px; }
@@ -1362,6 +1386,32 @@
     </article>
     <article class="recent-card">
       <div class="recent-tags">
+        <span>Timmins</span>
+        <span>Welding Website</span>
+        <span>Live Demo</span>
+      </div>
+      <h3>Gold City Welding</h3>
+      <p>A heavy-duty welding and industrial repair website demo with service pages, jobsite imagery, quote flow, gallery proof, and mobile-first local trust signals.</p>
+      <div class="recent-links">
+        <a href="gold-city-welding-case-study.html" class="recent-link">View case study</a>
+        <a href="https://gold-city-welding-demo-hbk.netlify.app/" class="recent-link" target="_blank" rel="noreferrer">Open demo</a>
+      </div>
+    </article>
+    <article class="recent-card">
+      <div class="recent-tags">
+        <span>Apparel</span>
+        <span>React Shop</span>
+        <span>Live Demo</span>
+      </div>
+      <h3>BREDIISHRED</h3>
+      <p>An action-sports apparel demo that shows HBK can build image-led brand sites, product cards, size selection, a demo cart, and crew signup flows.</p>
+      <div class="recent-links">
+        <a href="brediishred-demo-case-study.html" class="recent-link">View case study</a>
+        <a href="https://brediishred-demo-76060.netlify.app/" class="recent-link" target="_blank" rel="noreferrer">Open demo</a>
+      </div>
+    </article>
+    <article class="recent-card">
+      <div class="recent-tags">
         <span>Software Concept</span>
         <span>Trade Workflow</span>
         <span>HBK Build</span>
@@ -1374,26 +1424,27 @@
   <div class="proof-card">
     <div class="proof-copy">
       <p>
-        The strongest proof points right now are split across two tracks: JTR shows the kind of trade-focused website work HBK can deliver, and ForgeQuote shows where that can expand into custom quoting systems and internal software for industrial crews.
+        The proof layer now shows multiple kinds of HBK work: JTR and Gold City for trade-focused websites, BREDIISHRED for branded commerce-style demos, and ForgeQuote for custom quoting systems and internal software.
       </p>
       <div class="proof-meta">
         <span>Timmins, Ontario</span>
         <span>Industrial Services</span>
+        <span>Live Website Demos</span>
         <span>Website + Software Concepts</span>
         <span>Trade-First Positioning</span>
       </div>
       <div class="proof-actions">
-        <a href="forgequote-case-study.html" class="btn-primary">View ForgeQuote</a>
-        <a href="jtr-custom-works-case-study.html" class="btn-outline">View JTR Case Study</a>
-        <a href="https://jtrcustom.netlify.app/" class="btn-outline btn-demo" target="_blank" rel="noreferrer">Open JTR Demo</a>
+        <a href="gold-city-welding-case-study.html" class="btn-primary">View Gold City</a>
+        <a href="brediishred-demo-case-study.html" class="btn-outline">View BREDIISHRED</a>
+        <a href="forgequote-case-study.html" class="btn-outline">View ForgeQuote</a>
         <a href="https://app.hbkcustoms.ca/" class="btn-outline">Request an HBK Review</a>
       </div>
     </div>
     <div class="proof-preview">
-      <img src="assets/case-studies/jtr/banner1-1.jpg" alt="JTR Custom Works case study preview hero image">
+      <img src="assets/case-studies/gold-city-welding/homepage.png" alt="Gold City Welding website demo homepage screenshot">
       <div class="proof-preview-grid">
-        <img src="assets/case-studies/jtr/welding.jpg" alt="JTR Custom Works welding image">
-        <img src="assets/case-studies/jtr/millwright.jpg" alt="JTR Custom Works millwright image">
+        <img src="assets/case-studies/brediishred/homepage.png" alt="BREDIISHRED apparel website demo homepage screenshot">
+        <img src="assets/case-studies/jtr/banner1-1.jpg" alt="JTR Custom Works case study preview hero image">
       </div>
     </div>
   </div>
@@ -1684,6 +1735,8 @@
         <li><a href="industries.html">Industries</a></li>
         <li><a href="francais.html">Français</a></li>
         <li><a href="jtr-custom-works-case-study.html">JTR Case Study</a></li>
+        <li><a href="gold-city-welding-case-study.html">Gold City Case Study</a></li>
+        <li><a href="brediishred-demo-case-study.html">BREDIISHRED Case Study</a></li>
         <li><a href="forgequote-case-study.html">ForgeQuote</a></li>
         <li><a href="#quote">Contact</a></li>
       </ul>

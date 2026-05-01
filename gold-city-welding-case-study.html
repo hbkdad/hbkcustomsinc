@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold City Welding Case Study | HBK Customs Inc.</title>
+  <meta name="description" content="See how HBK Customs Inc. built the Gold City Welding live demo as a proof-of-work website case study for a Timmins industrial welding company.">
+  <link rel="canonical" href="https://hbkcustoms.ca/gold-city-welding-case-study.html">
+  <link rel="icon" type="image/svg+xml" href="hbk-compact-mark.svg">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#0b0d10; --steel:#14181d; --panel:#171d24; --line:rgba(255,255,255,0.08); --mid:#9098a1; --light:#d2d6db; --white:#f3f0ea; --blue:#14a3b8; --blue-soft:rgba(20,163,184,0.14); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#080808; color:var(--white); font-family:"Barlow",sans-serif; line-height:1.7; }
+    body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none; background:repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px), repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(0,180,216,0.04) 59px, rgba(0,180,216,0.04) 60px), radial-gradient(ellipse 80% 60% at 60% 18%, rgba(0,180,216,0.12) 0%, rgba(0,180,216,0.05) 32%, transparent 72%), linear-gradient(180deg,#080808,#10151b 55%,#0c1116); }
+    body.nav-open { overflow:hidden; }
+    a { color:inherit; }
+    nav { position:fixed; top:0; width:100%; z-index:100; height:64px; padding:0 40px; border-bottom:1px solid #222; background:rgba(8,8,8,0.92); backdrop-filter:blur(8px); }
+    .nav-inner, .wrap { max-width:1180px; margin:0 auto; position:relative; z-index:1; }
+    .nav-inner { height:100%; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { display:inline-flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand-mark { width:38px; height:38px; }
+    .brand-wordmark { height:24px; width:auto; }
+    .nav-menu { display:flex; align-items:center; gap:28px; }
+    .nav-links { display:flex; gap:34px; list-style:none; padding:0; margin:0; flex-wrap:wrap; }
+    .nav-links a { text-decoration:none; font-family:"Barlow Condensed",sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#888; }
+    .nav-links a:hover, .nav-links a.active { color:var(--blue); }
+    .nav-cta { display:inline-block; text-decoration:none; font-family:"Barlow Condensed",sans-serif; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:10px 24px; border-radius:999px; background:var(--blue); color:#000; }
+    .nav-toggle { display:none; width:44px; height:44px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.03); padding:0; align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; }
+    .nav-toggle span { display:block; width:18px; height:2px; border-radius:999px; background:var(--white); transition:transform 0.2s, opacity 0.2s; }
+    nav.is-open .nav-toggle span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    nav.is-open .nav-toggle span:nth-child(2) { opacity:0; }
+    nav.is-open .nav-toggle span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .wrap { padding:0 24px; }
+    .hero { padding:120px 0 72px; }
+    .eyebrow { color:var(--blue); font-family:"Barlow Condensed",sans-serif; letter-spacing:3px; text-transform:uppercase; font-size:12px; margin-bottom:10px; }
+    h1, h2, h3 { margin:0; font-family:"Bebas Neue",sans-serif; letter-spacing:1.5px; line-height:0.96; }
+    h1 { font-size:clamp(3.2rem,9vw,6.5rem); max-width:12ch; }
+    h2 { font-size:clamp(2rem,4vw,3.2rem); margin-bottom:18px; }
+    h3 { font-size:1.8rem; margin-bottom:10px; }
+    p { margin:0; color:var(--light); }
+    .hero-grid { margin-top:34px; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,360px); gap:28px; align-items:end; }
+    .hero-copy p { max-width:64ch; font-size:1.06rem; }
+    .hero-card, .section-card, .metric { background:rgba(17,22,29,0.88); border:1px solid var(--line); border-radius:28px; padding:24px; box-shadow:0 28px 70px rgba(0,0,0,0.28); }
+    .hero-card ul, .section-card ul { margin:14px 0 0; padding-left:18px; color:var(--light); }
+    li + li { margin-top:8px; }
+    .cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:26px; }
+    .cta a { display:inline-block; text-decoration:none; padding:12px 22px; border-radius:999px; font-family:"Barlow Condensed",sans-serif; letter-spacing:2px; text-transform:uppercase; font-size:13px; font-weight:700; }
+    .cta-primary { background:var(--blue); color:#061015; }
+    .cta-secondary { border:1px solid var(--line); color:var(--light); }
+    .cta-demo { border:1px solid var(--blue); color:var(--blue); background:var(--blue-soft); }
+    .section { padding:0 0 72px; }
+    .section-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .screen { margin-top:28px; overflow:hidden; border:1px solid var(--line); border-radius:30px; background:#070b0f; box-shadow:0 30px 90px rgba(0,0,0,0.26); }
+    .screen img { width:100%; display:block; object-fit:cover; object-position:top; }
+    .metric-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:24px; }
+    .metric strong { display:block; font-family:"Bebas Neue",sans-serif; font-size:2.6rem; line-height:1; color:var(--blue); letter-spacing:1.5px; margin-bottom:8px; }
+    .metric span { color:var(--light); }
+    footer { position:relative; z-index:1; padding:34px 24px 44px; border-top:1px solid #20252b; background:var(--steel); color:var(--mid); }
+    .footer-inner { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .footer-inner a { color:var(--light); text-decoration:none; margin-right:16px; }
+    @media (max-width:980px) {
+      nav { padding:0 20px; }
+      .nav-toggle { display:inline-flex; }
+      .nav-menu { position:absolute; top:calc(100% + 12px); left:20px; right:20px; display:none; flex-direction:column; align-items:stretch; gap:18px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); }
+      nav.is-open .nav-menu { display:flex; }
+      .nav-links { flex-direction:column; gap:16px; }
+      .nav-cta { text-align:center; }
+      .hero { padding-top:100px; }
+      .hero-grid, .section-grid, .metric-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="HBK Customs Inc. home"><img class="brand-mark" src="hbk-icon.svg" alt="HBK icon"><img class="brand-wordmark" src="hbk-transparent.svg" alt="HBK Customs Inc."></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="website-builds.html">Website Builds</a></li>
+        <li><a href="jtr-custom-works-case-study.html">JTR</a></li>
+        <li><a href="brediishred-demo-case-study.html">BREDIISHRED</a></li>
+        <li><a class="active" href="gold-city-welding-case-study.html">Gold City</a></li>
+      </ul>
+      <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Case Study / Live Website Demo</p>
+    <h1>Gold City Welding trade website demo.</h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p>This live multi-page demo is structured for a Timmins welding and industrial repair company. It centers service clarity, heavy-duty jobsite imagery, mobile contact flow, local search intent, and practical proof that helps a trade business look established quickly.</p>
+        <div class="cta">
+          <a class="cta-primary" href="https://gold-city-welding-demo-hbk.netlify.app/" target="_blank" rel="noreferrer">Open Live Demo</a>
+          <a class="cta-secondary" href="website-builds.html">See Website Builds</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <p class="eyebrow">Build Snapshot</p>
+        <ul>
+          <li>Use case: Industrial welding and mobile repair website</li>
+          <li>Stack: Static HTML, CSS, JavaScript, optimized assets, Netlify Forms</li>
+          <li>Proof point: Multi-page service site with quote, gallery, and hiring paths</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="screen">
+      <img src="assets/case-studies/gold-city-welding/homepage.png" alt="Gold City Welding website demo homepage screenshot">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-grid">
+      <article class="section-card">
+        <p class="eyebrow">The Direction</p>
+        <h2>Make a welding business look ready for serious industrial work.</h2>
+        <p>The demo focuses on what buyers need to see first: services, location, equipment-ready confidence, proof images, hiring information, and direct call or quote actions. The design stays rugged and practical while still feeling polished enough for commercial and industrial customers.</p>
+      </article>
+      <article class="section-card">
+        <p class="eyebrow">Deliverables</p>
+        <h2>What HBK built into the demo.</h2>
+        <ul>
+          <li>Homepage, services page, project gallery, contact page, and thank-you page</li>
+          <li>Mobile navigation, call buttons, quote form, and Netlify Forms setup</li>
+          <li>SEO metadata for Timmins welding, mobile welding, and repair services</li>
+          <li>Optimized WebP imagery and scroll reveal interactions</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">Why It Matters</p>
+    <h2>It is direct proof of HBK's trade website offer.</h2>
+    <div class="metric-grid">
+      <div class="metric"><strong>01</strong><span>Shows how HBK can organize a real trade service list into pages that customers can scan quickly.</span></div>
+      <div class="metric"><strong>02</strong><span>Demonstrates local search structure for Timmins and Northern Ontario service buyers.</span></div>
+      <div class="metric"><strong>03</strong><span>Gives prospects a live example of contact flow, gallery proof, and mobile-first trust signals.</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <article class="section-card">
+      <p class="eyebrow">Next Step</p>
+      <h2>Use this case study when pitching welders, contractors, and industrial services.</h2>
+      <p>Gold City Welding is the clearest proof point for HBK's core trade website package because it shows the full path: service messaging, local trust, visual proof, contact flow, and room to expand into maintenance, hiring, service-area pages, or quote automation.</p>
+      <div class="cta">
+        <a class="cta-demo" href="https://gold-city-welding-demo-hbk.netlify.app/" target="_blank" rel="noreferrer">Open Gold City Demo</a>
+        <a class="cta-primary" href="https://app.hbkcustoms.ca/">Request an HBK Review</a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>HBK Customs Inc. / Proof of work case study</span>
+    <div>
+      <a href="index.html#proof">Recent Work</a>
+      <a href="brediishred-demo-case-study.html">BREDIISHRED</a>
+      <a href="website-builds.html">Website Builds</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const nav = document.querySelector('nav');
+    const toggle = nav ? nav.querySelector('.nav-toggle') : null;
+    const menu = nav ? nav.querySelector('.nav-menu') : null;
+    if (!nav || !toggle || !menu) return;
+    const closeMenu = () => {
+      nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      document.body.classList.toggle('nav-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) closeMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }());
+</script>
+</body>
+</html>

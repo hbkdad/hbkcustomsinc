@@ -52,10 +52,85 @@
   .trust-row, .hero-actions, .card-grid, .page-links { display:flex; gap:14px; flex-wrap:wrap; margin-top:24px; }
   .trust-pill { padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.03); color:var(--light); font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
   .card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:36px; }
+  .proof-section {
+    margin-top: 46px;
+    padding: 30px;
+    border: 1px solid #242424;
+    border-radius: 30px;
+    background:
+      linear-gradient(180deg, rgba(17,22,29,0.92), rgba(8,12,18,0.88)),
+      radial-gradient(circle at top right, rgba(0,180,216,0.12), transparent 32%);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.22);
+  }
+  .proof-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+    gap: 28px;
+    align-items: end;
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .demo-card {
+    overflow: hidden;
+    border: 1px solid #26303a;
+    border-radius: 26px;
+    background: rgba(8,12,18,0.74);
+  }
+  .demo-preview {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid #26303a;
+    background: #080c10;
+  }
+  .demo-preview img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: top;
+  }
+  .demo-body {
+    display: grid;
+    gap: 14px;
+    padding: 22px;
+  }
+  .demo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .demo-tags span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid #26303a;
+    background: rgba(255,255,255,0.03);
+    color: var(--mid);
+    font-family: 'Barlow Condensed',sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .demo-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .demo-link {
+    color: var(--blue-strong);
+    font-family: 'Barlow Condensed',sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
   ul { margin:0; padding-left:18px; color:var(--light); }
   li + li { margin-top:8px; }
   .footer-copy { color:var(--mid); max-width:720px; }
-  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .nav-inner { flex-wrap:nowrap; } .nav-toggle { display:inline-flex; } .nav-menu { display:none; position:absolute; top:calc(100% + 12px); left:20px; right:20px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); flex-direction:column; align-items:stretch; gap:18px; } nav.is-open .nav-menu { display:flex; } .nav-links { flex-direction:column; gap:16px; } .nav-cta { width:100%; text-align:center; } .hero, .card-grid { grid-template-columns:1fr; } }
+  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .nav-inner { flex-wrap:nowrap; } .nav-toggle { display:inline-flex; } .nav-menu { display:none; position:absolute; top:calc(100% + 12px); left:20px; right:20px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); flex-direction:column; align-items:stretch; gap:18px; } nav.is-open .nav-menu { display:flex; } .nav-links { flex-direction:column; gap:16px; } .nav-cta { width:100%; text-align:center; } .hero, .card-grid, .proof-head, .demo-grid { grid-template-columns:1fr; } .proof-section { padding:20px; } }
 </style>
 </head>
 <body>
@@ -114,6 +189,54 @@
       <p>Calls, forms, and next steps are easy to find so the website works like a business tool, not just a brochure.</p>
     </div>
   </div>
+
+  <section class="proof-section" aria-labelledby="website-proof-title">
+    <div class="proof-head">
+      <div>
+        <div class="eyebrow">Proof of work</div>
+        <h2 id="website-proof-title">Recent website demos with real pages, forms, and brand direction.</h2>
+      </div>
+      <p>These are not static mockups. They are live demo sites built to show how HBK can turn rough business needs into a polished web presence that a customer can open, click through, and understand fast.</p>
+    </div>
+    <div class="demo-grid">
+      <article class="demo-card">
+        <div class="demo-preview">
+          <img src="assets/case-studies/gold-city-welding/homepage.png" alt="Gold City Welding website demo homepage screenshot">
+        </div>
+        <div class="demo-body">
+          <div class="demo-tags">
+            <span>Trade Website</span>
+            <span>Timmins</span>
+            <span>Live Demo</span>
+          </div>
+          <h3>Gold City Welding</h3>
+          <p>Heavy-duty welding and industrial repair demo with service pages, quote flow, gallery proof, hiring callout, SEO metadata, and Netlify Forms markup.</p>
+          <div class="demo-links">
+            <a class="demo-link" href="gold-city-welding-case-study.html">View case study</a>
+            <a class="demo-link" href="https://gold-city-welding-demo-hbk.netlify.app/" target="_blank" rel="noreferrer">Open live demo</a>
+          </div>
+        </div>
+      </article>
+      <article class="demo-card">
+        <div class="demo-preview">
+          <img src="assets/case-studies/brediishred/homepage.png" alt="BREDIISHRED apparel website demo homepage screenshot">
+        </div>
+        <div class="demo-body">
+          <div class="demo-tags">
+            <span>Brand Site</span>
+            <span>React Demo</span>
+            <span>Live Demo</span>
+          </div>
+          <h3>BREDIISHRED</h3>
+          <p>Action-sports apparel demo with real product cards, size selection, demo cart behavior, visual brand storytelling, gallery content, and a crew signup flow.</p>
+          <div class="demo-links">
+            <a class="demo-link" href="brediishred-demo-case-study.html">View case study</a>
+            <a class="demo-link" href="https://brediishred-demo-76060.netlify.app/" target="_blank" rel="noreferrer">Open live demo</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <div class="hero" style="margin-top:42px;">
     <div class="hero-card">
