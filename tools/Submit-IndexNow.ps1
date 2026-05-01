@@ -23,8 +23,25 @@ $payload = @{
   urlList = $urls
 } | ConvertTo-Json -Depth 4
 
-$response = Invoke-WebRequest -Uri $endpoint -Method Post -ContentType "application/json; charset=utf-8" -Body $payload
+$response = & curl.exe `
+  --silent `
+  --show-error `
+  --write-out "HTTPSTATUS:%{http_code}" `
+  -X POST `
+  -H "Content-Type: application/json; charset=utf-8" `
+  --data $payload `
+  $endpoint
 
 Write-Host "IndexNow submission complete." -ForegroundColor Cyan
-Write-Host "Status: $($response.StatusCode)" -ForegroundColor Green
+if ($response -match "HTTPSTATUS:(\d{3})$") {
+  $status = $matches[1]
+  $body = $response -replace "HTTPSTATUS:\d{3}$", ""
+  Write-Host "Status: $status" -ForegroundColor Green
+  if ($body.Trim()) {
+    Write-Host "Response: $body"
+  }
+} else {
+  Write-Host "Status: unknown" -ForegroundColor Yellow
+  Write-Host $response
+}
 Write-Host "Endpoint: $endpoint"
