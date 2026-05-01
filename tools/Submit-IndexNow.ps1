@@ -23,13 +23,16 @@ $payload = @{
   urlList = $urls
 } | ConvertTo-Json -Depth 4
 
+$tempFile = Join-Path $env:TEMP "hbk-indexnow-payload.json"
+Set-Content -Path $tempFile -Value $payload -Encoding utf8
+
 $response = & curl.exe `
   --silent `
   --show-error `
   --write-out "HTTPSTATUS:%{http_code}" `
   -X POST `
   -H "Content-Type: application/json; charset=utf-8" `
-  --data $payload `
+  --data-binary "@$tempFile" `
   $endpoint
 
 Write-Host "IndexNow submission complete." -ForegroundColor Cyan
@@ -45,3 +48,7 @@ if ($response -match "HTTPSTATUS:(\d{3})$") {
   Write-Host $response
 }
 Write-Host "Endpoint: $endpoint"
+
+if (Test-Path $tempFile) {
+  Remove-Item -LiteralPath $tempFile -Force
+}
