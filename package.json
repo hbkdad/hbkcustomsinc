@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "deploy": "wrangler pages deploy . --project-name=hbkcustomsinc --branch=main",
-    "deploy:app": "wrangler pages deploy . --project-name=hbkcustomsinc-app --branch=main"
+    "deploy:app": "wrangler pages deploy . --project-name=hbkcustomsinc-app --branch=main",
+    "indexnow": "powershell -ExecutionPolicy Bypass -File tools/Submit-IndexNow.ps1"
   },
   "devDependencies": {
     "wrangler": "^4.85.0"
