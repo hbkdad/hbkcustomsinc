@@ -54,8 +54,10 @@
   .point { display:flex; gap:16px; padding-top:14px; border-top:1px solid rgba(125,170,205,0.12); }
   .point strong { min-width:118px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--blue); }
   .point span { color:var(--light); }
+  .system-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,360px); gap:28px; margin-top:28px; }
+  .asset-preview { width:100%; display:block; border-radius:20px; border:1px solid rgba(125,170,205,0.12); background:#0c1015; }
   .footer-copy { color:var(--mid); max-width:720px; }
-  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .nav-inner { flex-wrap:nowrap; } .nav-toggle { display:inline-flex; } .nav-menu { display:none; position:absolute; top:calc(100% + 12px); left:20px; right:20px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); flex-direction:column; align-items:stretch; gap:18px; } nav.is-open .nav-menu { display:flex; } .nav-links { flex-direction:column; gap:16px; } .nav-cta { width:100%; text-align:center; } .hero, .about-grid { grid-template-columns:1fr; } }
+  @media (max-width:900px) { nav, footer, .page { padding-left:20px; padding-right:20px; } .nav-inner { flex-wrap:nowrap; } .nav-toggle { display:inline-flex; } .nav-menu { display:none; position:absolute; top:calc(100% + 12px); left:20px; right:20px; padding:20px; border:1px solid #242424; border-radius:24px; background:rgba(8,8,8,0.96); box-shadow:0 24px 70px rgba(0,0,0,0.35); flex-direction:column; align-items:stretch; gap:18px; } nav.is-open .nav-menu { display:flex; } .nav-links { flex-direction:column; gap:16px; } .nav-cta { width:100%; text-align:center; } .hero, .about-grid, .system-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -70,6 +72,7 @@
         <a href="packages.html">Packages</a>
         <a href="process.html">Process</a>
         <a href="industries.html">Industries</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="about.html" class="active">About</a>
       </div>
       <a class="nav-cta" href="https://app.hbkcustoms.ca/">Start Review</a>
@@ -107,6 +110,31 @@
         <div class="point"><strong>Corporate Finish</strong><span>Sharper structure, stronger messaging, and more polished presentation without turning the company into something it is not.</span></div>
         <div class="point"><strong>Direct Delivery</strong><span>Clear communication, practical scope, and startup-friendly execution instead of agency fluff or overcomplication.</span></div>
         <div class="point"><strong>Local Fit</strong><span>Built from Timmins for Northern Ontario companies, with English and French service available as the business grows.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="system-grid">
+    <div class="panel">
+      <div class="eyebrow">Business-Ready System</div>
+      <h2>HBK now has polished company documents and attachment assets too.</h2>
+      <p>The credibility layer is not just the website anymore. HBK now has a cleaner pro-logo set, a client-facing email signature, and a branded proposal letterhead that can be used across reviews, quotes, attachments, and follow-up files.</p>
+      <div class="point-list">
+        <div class="point"><strong>Logo Pack</strong><span>Improved dark and light logo files for proposals, attachments, and business-facing documents.</span></div>
+        <div class="point"><strong>Email Signature</strong><span>A cleaner founder signature that matches the website direction and keeps outgoing messages more polished.</span></div>
+        <div class="point"><strong>Letterhead</strong><span>A branded quote and proposal template that makes HBK feel more established in PDF and document handoffs.</span></div>
+      </div>
+      <div class="trust-row">
+        <a class="btn" href="case-studies.html">View Case Studies</a>
+        <a class="btn" href="downloads/HBK-letterhead-template.html">Open Letterhead</a>
+        <a class="btn" href="downloads/email-signature-copy-paste.html">Open Signature</a>
+      </div>
+    </div>
+    <div class="panel">
+      <img class="asset-preview" src="downloads/email-signature-preview.png" alt="HBK Customs Inc. email signature preview">
+      <div class="trust-row">
+        <span class="trust-pill">Proposal-ready</span>
+        <span class="trust-pill">Attachment-ready</span>
+        <span class="trust-pill">Founder-led</span>
       </div>
     </div>
   </div>
