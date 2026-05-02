@@ -1,3 +1,4 @@
 node_modules/
 .wrangler/
+.codex-qa/
 *.zip

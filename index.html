@@ -505,6 +505,406 @@
   .service-includes li { padding: 5px 0; border-bottom: 1px solid #181818; }
   .service-includes li::before { content: '- '; color: var(--blue-dim); }
 
+  /* BRAND MOTION */
+  #brand-motion {
+    background:
+      linear-gradient(180deg, #0b0d10 0%, #10151a 52%, #0b0d10 100%);
+    border-top: 1px solid #181818;
+    border-bottom: 1px solid #181818;
+    overflow: hidden;
+    position: relative;
+  }
+  #brand-motion::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0 58px, rgba(20,163,184,0.05) 59px 60px, transparent 61px),
+      linear-gradient(180deg, transparent 0 58px, rgba(20,163,184,0.035) 59px 60px, transparent 61px);
+    opacity: 0.56;
+    pointer-events: none;
+  }
+  .brand-motion-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+    gap: 48px;
+    align-items: start;
+  }
+  .brand-motion-copy {
+    position: sticky;
+    top: 96px;
+  }
+  .brand-motion-copy .section-intro {
+    max-width: 500px;
+  }
+  .motion-points {
+    display: grid;
+    gap: 14px;
+    margin: 32px 0;
+  }
+  .motion-point {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #1f262d;
+  }
+  .motion-point strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .motion-point span {
+    color: var(--light);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .brand-motion-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .logo-concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .logo-concept-card {
+    min-height: 500px;
+    display: grid;
+    grid-template-rows: 270px 1fr;
+    border: 1px solid #20252b;
+    border-radius: 24px;
+    background:
+      linear-gradient(180deg, rgba(17, 22, 29, 0.96), rgba(8, 12, 18, 0.98)),
+      radial-gradient(circle at 40% 0%, rgba(20,163,184,0.12), transparent 34%);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.24);
+    overflow: hidden;
+  }
+  .logo-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 270px;
+    border-bottom: 1px solid #20252b;
+    background:
+      radial-gradient(circle at 50% 34%, rgba(20,163,184,0.22), transparent 36%),
+      linear-gradient(135deg, rgba(255,255,255,0.055), transparent 42%),
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.1));
+    perspective: 900px;
+    overflow: hidden;
+  }
+  .logo-stage::before {
+    content: '';
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(20,163,184,0.13);
+    transform: skewX(-10deg);
+  }
+  .logo-stage::after {
+    content: '';
+    position: absolute;
+    left: 16%;
+    right: 16%;
+    bottom: 36px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.46);
+    filter: blur(12px);
+  }
+  .concept-body {
+    padding: 24px;
+    display: grid;
+    gap: 16px;
+  }
+  .concept-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 1.5px;
+    line-height: 0.95;
+    color: var(--white);
+  }
+  .concept-body p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--light);
+  }
+  .concept-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    align-self: end;
+  }
+  .concept-tags span {
+    border: 1px solid #26303a;
+    border-radius: 999px;
+    padding: 7px 10px;
+    background: rgba(255,255,255,0.03);
+    color: var(--mid);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  .forged-badge {
+    position: relative;
+    width: 182px;
+    height: 168px;
+    transform-style: preserve-3d;
+    animation: forgedBadgeTurn 6.8s ease-in-out infinite;
+    z-index: 1;
+  }
+  .forged-logo-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 18px 18px rgba(0,0,0,0.45)) drop-shadow(0 0 24px rgba(20,163,184,0.22));
+  }
+  .forged-logo-svg .badge-depth {
+    fill: #05080b;
+    transform: translate(0, 12px);
+  }
+  .forged-logo-svg .badge-rim {
+    fill: url(#forgedRim);
+    stroke: rgba(243,240,234,0.28);
+    stroke-width: 2.2;
+  }
+  .forged-logo-svg .badge-face {
+    fill: url(#forgedFace);
+    stroke: rgba(20,163,184,0.78);
+    stroke-width: 2;
+  }
+  .forged-logo-svg .badge-inner {
+    fill: rgba(20,163,184,0.08);
+    stroke: rgba(20,163,184,0.45);
+    stroke-width: 1.4;
+  }
+  .forged-logo-svg .logo-text-back {
+    font-family: 'Arial Black', 'Segoe UI', sans-serif;
+    font-size: 46px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-anchor: middle;
+    fill: #050709;
+    transform: translate(2px, 4px);
+  }
+  .forged-logo-svg .logo-text-face {
+    font-family: 'Arial Black', 'Segoe UI', sans-serif;
+    font-size: 46px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-anchor: middle;
+    fill: url(#forgedLetters);
+    stroke: rgba(255,255,255,0.42);
+    stroke-width: 0.7;
+  }
+  .forged-logo-svg .logo-cut {
+    stroke: rgba(20,163,184,0.8);
+    stroke-width: 2.5;
+    stroke-linecap: square;
+  }
+  .forged-logo-svg .edge-highlight {
+    fill: none;
+    stroke: rgba(255,255,255,0.38);
+    stroke-width: 1.2;
+    opacity: 0.7;
+  }
+  .forged-sparks,
+  .arc-sparks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--red);
+    box-shadow: 0 0 12px rgba(230,57,70,0.85);
+    opacity: 0;
+    animation: sparkDrift 2.8s ease-in-out infinite;
+  }
+  .spark:nth-child(1) { left: 24%; top: 34%; animation-delay: 0.2s; }
+  .spark:nth-child(2) { right: 27%; top: 28%; animation-delay: 1s; }
+  .spark:nth-child(3) { left: 34%; bottom: 28%; animation-delay: 1.7s; }
+  .arc-logo-svg {
+    position: relative;
+    width: 242px;
+    max-width: 86%;
+    z-index: 1;
+    overflow: visible;
+    filter: drop-shadow(0 0 26px rgba(20,163,184,0.2));
+  }
+  .arc-logo-svg .arc-word-back,
+  .arc-logo-svg .arc-word-fill,
+  .arc-logo-svg .arc-word-highlight {
+    font-family: 'Arial Black', 'Segoe UI', sans-serif;
+    font-size: 76px;
+    font-weight: 900;
+    letter-spacing: 7px;
+  }
+  .arc-logo-svg .arc-word-back {
+    fill: #05080b;
+    stroke: #05080b;
+    stroke-width: 8;
+    transform: translate(3px, 5px);
+  }
+  .arc-logo-svg .arc-word-fill {
+    fill: rgba(10,18,23,0.88);
+    stroke: var(--blue);
+    stroke-width: 2.6;
+    stroke-linejoin: bevel;
+    stroke-dasharray: 470;
+    stroke-dashoffset: 470;
+    animation: traceLetters 5.2s ease-in-out infinite;
+  }
+  .arc-logo-svg .arc-word-highlight {
+    fill: none;
+    stroke: rgba(243,240,234,0.42);
+    stroke-width: 0.85;
+    stroke-dasharray: 22 18;
+    opacity: 0.75;
+  }
+  .arc-logo-svg .weld-track {
+    fill: none;
+    stroke: rgba(243,240,234,0.22);
+    stroke-width: 1.2;
+  }
+  .arc-logo-svg .weld-line {
+    fill: none;
+    stroke: url(#weldGradient);
+    stroke-width: 5.5;
+    stroke-linecap: round;
+    stroke-dasharray: 360;
+    stroke-dashoffset: 360;
+    filter: url(#arcGlow);
+    animation: weldPass 5.2s ease-in-out infinite 0.36s;
+  }
+  .arc-logo-svg .weld-sheen {
+    fill: none;
+    stroke: rgba(255,255,255,0.78);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 18 26;
+    opacity: 0.7;
+  }
+  .arc-logo-svg .torch-body {
+    fill: #14181d;
+    stroke: rgba(243,240,234,0.38);
+    stroke-width: 1.4;
+  }
+  .arc-logo-svg .torch-tip {
+    fill: var(--red);
+  }
+  .arc-logo-svg .hot-dot {
+    fill: #fff5d8;
+    filter: url(#arcGlow);
+  }
+  .arc-logo-svg .heat-dot {
+    fill: var(--red);
+    opacity: 0.95;
+  }
+  .blueprint-frame {
+    position: relative;
+    width: 206px;
+    height: 178px;
+    transform-style: preserve-3d;
+    transform: rotateX(58deg) rotateZ(-35deg);
+    animation: blueprintFold 6.4s ease-in-out infinite;
+    z-index: 1;
+  }
+  .blueprint-logo-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 16px 16px rgba(0,0,0,0.42)) drop-shadow(0 0 18px rgba(20,163,184,0.16));
+  }
+  .blueprint-grid {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(20,163,184,0.2) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(20,163,184,0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border: 1px solid rgba(20,163,184,0.3);
+    box-shadow: 0 0 28px rgba(20,163,184,0.12);
+  }
+  .blueprint-badge {
+    position: absolute;
+    inset: 24px;
+    clip-path: polygon(50% 0, 91% 24%, 91% 76%, 50% 100%, 9% 76%, 9% 24%);
+    border: 3px solid var(--blue);
+    background:
+      linear-gradient(145deg, rgba(20,163,184,0.2), rgba(243,240,234,0.04)),
+      rgba(11,13,16,0.76);
+    transform: translateZ(34px);
+    box-shadow: 0 0 24px rgba(20,163,184,0.24);
+  }
+  .blueprint-badge::before {
+    content: 'HBK';
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .blueprint-lines {
+    position: absolute;
+    inset: -14px;
+    border: 1px dashed rgba(243,240,234,0.26);
+    transform: translateZ(12px);
+  }
+  .blueprint-lines::before,
+  .blueprint-lines::after {
+    content: '';
+    position: absolute;
+    background: rgba(20,163,184,0.6);
+  }
+  .blueprint-lines::before {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+  .blueprint-lines::after {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+
+  @keyframes forgedBadgeTurn {
+    0%, 100% { transform: rotateX(18deg) rotateY(-24deg) translateY(0); }
+    50% { transform: rotateX(18deg) rotateY(24deg) translateY(-8px); }
+  }
+  @keyframes sparkDrift {
+    0%, 100% { opacity: 0; transform: translate3d(0,0,0) scale(0.6); }
+    18% { opacity: 1; }
+    52% { opacity: 0; transform: translate3d(24px,-32px,0) scale(1); }
+  }
+  @keyframes traceLetters {
+    0%, 14% { stroke-dashoffset: 470; opacity: 0.6; }
+    45%, 72% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: -470; opacity: 0.6; }
+  }
+  @keyframes weldPass {
+    0%, 14% { stroke-dashoffset: 360; opacity: 0.35; }
+    48%, 76% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: -360; opacity: 0.35; }
+  }
+  @keyframes blueprintFold {
+    0%, 100% { transform: rotateX(60deg) rotateZ(-34deg) translateY(0); }
+    50% { transform: rotateX(18deg) rotateZ(0deg) translateY(-8px); }
+  }
+
   /* NICHES */
   #niches { background: var(--black); }
   .niches-inner { max-width: 1100px; margin: 60px auto 0; }
@@ -1125,6 +1525,18 @@
     .section-intro { font-size: 15px; }
     .services-header { margin-bottom: 32px; }
     .service-card { padding: 28px 22px; }
+    .brand-motion-inner { grid-template-columns: 1fr; gap: 32px; }
+    .brand-motion-copy { position: static; }
+    .motion-point { grid-template-columns: 1fr; gap: 8px; padding-top: 14px; }
+    .brand-motion-actions { gap: 10px; }
+    .logo-concept-grid { grid-template-columns: 1fr; gap: 18px; }
+    .logo-concept-card { min-height: 0; grid-template-rows: 230px 1fr; border-radius: 20px; }
+    .logo-stage { min-height: 230px; }
+    .forged-badge { width: 148px; height: 136px; }
+    .arc-logo-svg { width: 226px; max-width: 92%; }
+    .blueprint-frame { width: 178px; height: 154px; }
+    .concept-body { padding: 20px; }
+    .concept-body h3 { font-size: 30px; }
     .niches-inner { margin-top: 36px; }
     .local-note { margin-top: 20px; padding: 14px 16px; }
     .recent-grid, .proof-card, .founder-card, .why-grid, .quote-inner, .trust-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1192,6 +1604,20 @@
     .footer-top .footer-links { display: none; }
     .footer-support { display: none; }
     .footer-bottom { gap: 8px; font-size: 11px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .forged-badge,
+    .arc-logo-svg .arc-word-fill,
+    .arc-logo-svg .weld-line,
+    .blueprint-frame,
+    .spark {
+      animation: none;
+    }
+    .arc-logo-svg .arc-word-fill,
+    .arc-logo-svg .weld-line {
+      stroke-dashoffset: 0;
+    }
   }
 </style>
 </head>
@@ -1324,11 +1750,186 @@
       <div class="service-price">$300 - $1,500+</div>
       <ul class="service-includes">
         <li>Logo design</li>
+        <li>3D logo motion concepts</li>
         <li>Business cards & flyers</li>
         <li>Social media kits</li>
         <li>Quote & invoice templates</li>
-        <li>AI-powered design packs</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND MOTION -->
+<section id="brand-motion">
+  <div class="brand-motion-inner">
+    <div class="brand-motion-copy">
+      <div class="section-tag">Logo Creation & Brand Motion</div>
+      <h2>Marks That Look Built, Not Bought</h2>
+      <p class="section-intro">A stronger logo should work on a truck door, a quote sheet, a website header, and a social reel. These concepts show how HBK can turn trade-first identity work into motion-ready brand systems.</p>
+      <div class="motion-points">
+        <div class="motion-point">
+          <strong>Scope</strong>
+          <span>Three logo directions, cleanup rounds, color rules, and export-ready files for web, print, socials, invoices, and proposals.</span>
+        </div>
+        <div class="motion-point">
+          <strong>Motion</strong>
+          <span>Optional 3D intro loops, weld-trace reveals, animated badge marks, and short clips for launch posts or website sections.</span>
+        </div>
+        <div class="motion-point">
+          <strong>Fit</strong>
+          <span>Built for welders, contractors, millwrights, industrial services, and owner-led companies that need a sharper first impression.</span>
+        </div>
+      </div>
+      <div class="brand-motion-actions">
+        <a href="https://app.hbkcustoms.ca/" class="btn-primary">Start a Brand Review</a>
+        <a href="packages.html" class="btn-outline">See Logo Pricing</a>
+      </div>
+    </div>
+    <div class="logo-concept-grid" aria-label="3D logo concept examples">
+      <article class="logo-concept-card">
+        <div class="logo-stage" aria-label="Animated forged hex HBK logo concept">
+          <div class="forged-badge">
+            <svg class="forged-logo-svg" viewBox="0 0 220 190" role="img" aria-labelledby="forged-title">
+              <title id="forged-title">Machined HBK hex badge logo concept</title>
+              <defs>
+                <linearGradient id="forgedRim" x1="32" y1="24" x2="188" y2="166" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#dce7ec"/>
+                  <stop offset="0.22" stop-color="#197f91"/>
+                  <stop offset="0.5" stop-color="#29343d"/>
+                  <stop offset="0.78" stop-color="#050709"/>
+                  <stop offset="1" stop-color="#20c0d4"/>
+                </linearGradient>
+                <linearGradient id="forgedFace" x1="62" y1="42" x2="164" y2="150" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#1d2c34"/>
+                  <stop offset="0.48" stop-color="#0a1116"/>
+                  <stop offset="1" stop-color="#15232b"/>
+                </linearGradient>
+                <linearGradient id="forgedLetters" x1="74" y1="58" x2="150" y2="126" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.42" stop-color="#d7e4e8"/>
+                  <stop offset="0.72" stop-color="#7f8c93"/>
+                  <stop offset="1" stop-color="#f3f0ea"/>
+                </linearGradient>
+              </defs>
+              <polygon class="badge-depth" points="110,16 186,59 186,137 110,180 34,137 34,59"></polygon>
+              <polygon class="badge-rim" points="110,8 194,55 194,133 110,180 26,133 26,55"></polygon>
+              <polygon class="badge-face" points="110,29 171,64 171,124 110,160 49,124 49,64"></polygon>
+              <polygon class="badge-inner" points="110,45 154,70 154,118 110,143 66,118 66,70"></polygon>
+              <path class="edge-highlight" d="M48 61 110 26 172 61"></path>
+              <path class="logo-cut" d="M110 12v16M110 160v18M26 94h18M176 94h18"></path>
+              <text class="logo-text-back" x="110" y="112" textLength="96" lengthAdjust="spacingAndGlyphs">HBK</text>
+              <text class="logo-text-face" x="110" y="108" textLength="96" lengthAdjust="spacingAndGlyphs">HBK</text>
+            </svg>
+          </div>
+          <div class="forged-sparks" aria-hidden="true">
+            <i class="spark"></i>
+            <i class="spark"></i>
+            <i class="spark"></i>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h3>Forged Hex Mark</h3>
+          <p>A beveled badge direction for companies that want the logo to feel machined, durable, and easy to stamp across trucks, uniforms, quote sheets, and headers.</p>
+          <div class="concept-tags">
+            <span>3D Badge</span>
+            <span>Truck Decal</span>
+            <span>Profile Icon</span>
+          </div>
+        </div>
+      </article>
+      <article class="logo-concept-card">
+        <div class="logo-stage arc-stage" aria-label="Animated weld-trace HBK wordmark concept">
+          <svg class="arc-logo-svg" viewBox="0 0 280 172" role="img" aria-labelledby="arc-title">
+            <title id="arc-title">Improved HBK arc-line weld wordmark animation concept</title>
+            <defs>
+              <filter id="arcGlow" x="-35%" y="-35%" width="170%" height="170%">
+                <feGaussianBlur stdDeviation="3.2" result="blur"></feGaussianBlur>
+                <feMerge>
+                  <feMergeNode in="blur"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+              <linearGradient id="weldGradient" x1="32" y1="112" x2="250" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#14a3b8"></stop>
+                <stop offset="0.46" stop-color="#e63946"></stop>
+                <stop offset="0.68" stop-color="#fff3c4"></stop>
+                <stop offset="1" stop-color="#14a3b8"></stop>
+              </linearGradient>
+              <path id="arcWeldPath" d="M28 116 C82 72, 126 57, 174 66 C208 72, 231 90, 253 101"></path>
+            </defs>
+            <text class="arc-word-back" x="22" y="104">HBK</text>
+            <text class="arc-word-fill" x="18" y="100">HBK</text>
+            <text class="arc-word-highlight" x="18" y="100">HBK</text>
+            <path class="weld-track" d="M22 124 H258"></path>
+            <use class="weld-line" href="#arcWeldPath"></use>
+            <use class="weld-sheen" href="#arcWeldPath"></use>
+            <circle class="hot-dot" r="5">
+              <animateMotion dur="5.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.62;1" calcMode="linear">
+                <mpath href="#arcWeldPath"></mpath>
+              </animateMotion>
+            </circle>
+            <circle class="heat-dot" r="2.5">
+              <animateMotion dur="5.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0.08;0.7;1" calcMode="linear">
+                <mpath href="#arcWeldPath"></mpath>
+              </animateMotion>
+            </circle>
+            <g transform="translate(238 84) rotate(24)">
+              <rect class="torch-body" x="0" y="-9" width="34" height="16" rx="5"></rect>
+              <path class="torch-tip" d="M-8 -4 L2 -8 L2 8 L-8 4 Z"></path>
+            </g>
+          </svg>
+          <div class="arc-sparks" aria-hidden="true">
+            <i class="spark"></i>
+            <i class="spark"></i>
+            <i class="spark"></i>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h3>Arc-Line Wordmark</h3>
+          <p>A weld-trace reveal for launch reels, website headers, and social intros where the brand draws itself in before locking into a clean wordmark.</p>
+          <div class="concept-tags">
+            <span>Logo Reveal</span>
+            <span>Launch Reel</span>
+            <span>Weld Trace</span>
+          </div>
+        </div>
+      </article>
+      <article class="logo-concept-card">
+        <div class="logo-stage" aria-label="Animated blueprint to badge HBK logo concept">
+          <div class="blueprint-frame">
+            <svg class="blueprint-logo-svg" viewBox="0 0 230 190" role="img" aria-labelledby="blueprint-title">
+              <title id="blueprint-title">Blueprint grid folding into HBK badge logo concept</title>
+              <defs>
+                <pattern id="blueGrid" width="18" height="18" patternUnits="userSpaceOnUse">
+                  <path d="M18 0H0V18" fill="none" stroke="rgba(20,163,184,0.28)" stroke-width="1"></path>
+                </pattern>
+                <linearGradient id="blueBadge" x1="52" y1="50" x2="148" y2="140" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#26333c"></stop>
+                  <stop offset="0.5" stop-color="#0a1116"></stop>
+                  <stop offset="1" stop-color="#1cb4c8"></stop>
+                </linearGradient>
+              </defs>
+              <rect x="17" y="18" width="196" height="150" fill="url(#blueGrid)" stroke="rgba(20,163,184,0.42)" stroke-width="1.4"></rect>
+              <path d="M25 93H205M115 22V166" stroke="rgba(20,163,184,0.72)" stroke-width="1.2"></path>
+              <path d="M54 50H164V132H54ZM79 70H139V112H79Z" fill="none" stroke="rgba(243,240,234,0.25)" stroke-dasharray="6 6"></path>
+              <polygon points="115,40 170,72 170,129 115,162 60,129 60,72" fill="#05080b" opacity="0.72" transform="translate(4 9)"></polygon>
+              <polygon points="115,32 179,69 179,125 115,162 51,125 51,69" fill="url(#blueBadge)" stroke="rgba(243,240,234,0.36)" stroke-width="2.2"></polygon>
+              <polygon points="115,51 158,76 158,117 115,143 72,117 72,76" fill="rgba(20,163,184,0.09)" stroke="rgba(20,163,184,0.56)" stroke-width="1.6"></polygon>
+              <text x="115" y="113" text-anchor="middle" font-family="'Arial Black','Segoe UI',sans-serif" font-size="40" font-weight="900" letter-spacing="2.2" textLength="78" lengthAdjust="spacingAndGlyphs" fill="#f3f0ea" stroke="rgba(0,0,0,0.42)" stroke-width="1">HBK</text>
+              <path d="M51 69 17 18M179 125 213 168M115 32V18M115 162V178" stroke="rgba(20,163,184,0.6)" stroke-width="1"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="concept-body">
+          <h3>Blueprint To Badge</h3>
+          <p>A technical concept that starts as a plan, folds into a finished mark, and fits trade companies that want a precise, engineered, corporate-ready identity.</p>
+          <div class="concept-tags">
+            <span>Brand System</span>
+            <span>Proposal Ready</span>
+            <span>Animated Intro</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1608,9 +2209,15 @@
       </tr>
       <tr>
         <td class="service-col">Logo Design</td>
-        <td>3 concepts, 2 revision rounds, all file formats</td>
+        <td>3 concepts, 2 revision rounds, all file formats, optional motion direction</td>
         <td class="price-col">$300-$900</td>
         <td>3-5 days</td>
+      </tr>
+      <tr>
+        <td class="service-col">Logo Motion Add-On</td>
+        <td>3D badge loop, weld-trace reveal, or blueprint-to-logo intro for web and social</td>
+        <td class="price-col">$250-$750</td>
+        <td>2-5 days</td>
       </tr>
       <tr>
         <td class="service-col">Business Card Design</td>
