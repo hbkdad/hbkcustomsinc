@@ -195,7 +195,17 @@
     position: absolute; inset: 0;
     background: radial-gradient(ellipse 80% 60% at 60% 50%, rgba(0,180,216,0.08) 0%, transparent 70%);
   }
-  .hero-content { position: relative; z-index: 1; max-width: 1100px; }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1320px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 0.98fr) minmax(320px, 430px);
+    gap: 56px;
+    align-items: start;
+  }
+  .hero-copy { min-width: 0; }
   .hero-brand {
     position: relative;
     width: fit-content;
@@ -328,6 +338,148 @@
     border-top: 1px solid #222; padding-top: 40px;
   }
   .hero-stats > div:nth-child(5) { display: none; }
+  .hero-side {
+    display: grid;
+    gap: 18px;
+    align-self: stretch;
+    padding-top: 44px;
+  }
+  .hero-panel {
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(17,22,29,0.92), rgba(10,14,19,0.88));
+    box-shadow: 0 28px 80px rgba(0,0,0,0.28);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(20,163,184,0.75), rgba(20,163,184,0));
+  }
+  .hero-panel-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .hero-panel h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero-panel p {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.75;
+  }
+  .hero-panel-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .hero-panel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-panel-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  .hero-panel-item strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .hero-panel-item span {
+    display: block;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    max-width: 220px;
+  }
+  .hero-panel-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: var(--blue);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .hero-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .hero-mini-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 14px;
+    background: rgba(255,255,255,0.02);
+  }
+  .hero-mini-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+  .hero-mini-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .hero-separate-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .hero-separate-list li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 13px;
+    color: var(--light);
+    line-height: 1.7;
+  }
+  .hero-separate-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+  .hero-panel-note {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 14px;
+    line-height: 1.7;
+  }
   .startup-note {
     margin-top: 28px;
     max-width: 620px;
@@ -1261,6 +1413,31 @@
     letter-spacing: 1px;
     white-space: nowrap;
   }
+  .packages-note-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .packages-note-card {
+    border: 1px solid #20252b;
+    border-radius: 24px;
+    padding: 22px;
+    background: rgba(8,12,18,0.72);
+  }
+  .packages-note-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 0.95;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .packages-note-card p {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.75;
+  }
   .badge {
     display: inline-block;
     font-family: 'Barlow Condensed', sans-serif;
@@ -1510,6 +1687,8 @@
     .nav-logo .nav-wordmark { height: 24px; }
     section { padding: 60px 20px; }
     .hero { min-height: auto; padding: 92px 20px 44px; }
+    .hero-content { max-width: none; grid-template-columns: 1fr; gap: 0; }
+    .hero-side { display: none; }
     .hero-brand .hero-hex { width: 62px; height: 62px; left: 12px; }
     .hero h1 { font-size: clamp(52px, 15vw, 78px); margin-bottom: 20px; }
     .hero-sub { font-size: 15px; margin-bottom: 28px; }
@@ -1594,6 +1773,7 @@
       padding: 5px 0;
       border-bottom: none;
     }
+    .packages-note-grid { grid-template-columns: 1fr; }
     .quote-inner { margin-top: 32px; gap: 24px; }
     .quote-app-card { padding: 20px; }
     .quote-points { gap: 14px; }
@@ -1643,55 +1823,107 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-brand">
-      <img class="hero-hex" src="hbk-icon.svg" alt="HBK icon">
-      <img class="hero-wordmark" src="hbk-transparent.svg" alt="HBK Customs Inc. logo">
-    </div>
-    <div class="hero-tag">HBK Customs Inc. - Trade-Focused Digital Builds</div>
-    <h1>
-      Built Different.
-      <span class="accent">Designed Digital.</span>
-    </h1>
-    <p class="hero-sub">
-      We build websites, branding systems, and digital tools for trade companies. Founded by a welder in Timmins, Ontario. Fast turnaround. No corporate fluff. Built by people who understand real work.
-    </p>
-    <div class="hero-actions">
-      <a href="#quote" class="btn-primary">Get a Free Review</a>
-      <a href="services.html" class="btn-outline">See Services</a>
-    </div>
-    <div class="startup-note">
-      <div class="startup-note-title">Startup, but intentional</div>
-      <p>HBK is a new company founded by a working welder, so the promise is simple: direct communication, fixed-scope work, fast turnaround, and digital systems built specifically for trades instead of generic agency fluff.</p>
-    </div>
-    <div class="trust-strip">
-      <span class="trust-pill">Timmins-Based</span>
-      <span class="trust-pill">Serving Northern Ontario</span>
-      <span class="trust-pill">English / French Service</span>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">Direct</div>
-        <div class="stat-label">Founder-Led Builds</div>
+    <div class="hero-copy">
+      <div class="hero-brand">
+        <img class="hero-hex" src="hbk-icon.svg" alt="HBK icon">
+        <img class="hero-wordmark" src="hbk-transparent.svg" alt="HBK Customs Inc. logo">
       </div>
-      <div>
-        <div class="stat-num">4</div>
-        <div class="stat-label">Core Services</div>
+      <div class="hero-tag">HBK Customs Inc. - Trade-Focused Digital Builds</div>
+      <h1>
+        Built Different.
+        <span class="accent">Designed Digital.</span>
+      </h1>
+      <p class="hero-sub">
+        We build websites, branding systems, and digital tools for trade companies. Founded by a welder in Timmins, Ontario. Fast turnaround. No corporate fluff. Built by people who understand real work.
+      </p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn-primary">Get a Free Review</a>
+        <a href="services.html" class="btn-outline">See Services</a>
       </div>
-      <div>
-        <div class="stat-num">48H</div>
-        <div class="stat-label">Quote Turnaround</div>
+      <div class="startup-note">
+        <div class="startup-note-title">Startup, but intentional</div>
+        <p>HBK is a new company founded by a working welder, so the promise is simple: direct communication, fixed-scope work, fast turnaround, and digital systems built specifically for trades instead of generic agency fluff.</p>
       </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Trade-Focused</div>
+      <div class="trust-strip">
+        <span class="trust-pill">Timmins-Based</span>
+        <span class="trust-pill">Serving Northern Ontario</span>
+        <span class="trust-pill">English / French Service</span>
       </div>
-      <div>
-        <div class="stat-num">Startup</div>
-        <div class="stat-label">Growing Proof</div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">Direct</div>
+          <div class="stat-label">Founder-Led Builds</div>
+        </div>
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-label">Core Services</div>
+        </div>
+        <div>
+          <div class="stat-num">48H</div>
+          <div class="stat-label">Quote Turnaround</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Trade-Focused</div>
+        </div>
+        <div>
+          <div class="stat-num">Startup</div>
+          <div class="stat-label">Growing Proof</div>
+        </div>
       </div>
     </div>
+    <aside class="hero-side" aria-label="HBK pricing snapshot">
+      <div class="hero-panel">
+        <div class="hero-panel-tag">Pricing Snapshot</div>
+        <h3>Real scope. Real operating costs.</h3>
+        <p>HBK pricing stays fixed-scope. Standard brochure-site deployment is included on the HBK stack, while domain registration and business email stay client-owned and billed separately.</p>
+        <div class="hero-panel-list">
+          <div class="hero-panel-item">
+            <div>
+              <strong>Website Upgrade</strong>
+              <span>Refresh, mobile cleanup, CTA flow, and contact fixes.</span>
+            </div>
+            <div class="hero-panel-price">$900-$1,800</div>
+          </div>
+          <div class="hero-panel-item">
+            <div>
+              <strong>Full Website Build</strong>
+              <span>5-page build, SEO-ready structure, quote flow, and deployment.</span>
+            </div>
+            <div class="hero-panel-price">$2,500-$5,500</div>
+          </div>
+          <div class="hero-panel-item">
+            <div>
+              <strong>Lead Intake Setup</strong>
+              <span>Quote form routing, acknowledgment flow, and lead capture cleanup.</span>
+            </div>
+            <div class="hero-panel-price">$400-$900</div>
+          </div>
+        </div>
+        <div class="hero-mini-grid">
+          <div class="hero-mini-card">
+            <div class="hero-mini-label">Hosting</div>
+            <div class="hero-mini-value">Included</div>
+          </div>
+          <div class="hero-mini-card">
+            <div class="hero-mini-label">Domain</div>
+            <div class="hero-mini-value">Separate</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-tag">What Is Separate</div>
+        <h3>Client-owned from day one.</h3>
+        <ul class="hero-separate-list">
+          <li>Domain registration and renewals are billed separately at registrar cost.</li>
+          <li>Business email stays separate under Google Workspace or your preferred provider.</li>
+          <li>Maintenance is optional unless you want ongoing edits, monitoring, and support.</li>
+        </ul>
+        <p class="hero-panel-note">Standard brochure sites do not need bloated monthly hosting overhead. The main recurring costs are usually the domain, business email, and optional maintenance if you want HBK managing updates.</p>
+      </div>
+    </aside>
   </div>
-</section>
+ </section>
 
 <!-- SERVICES -->
 <section id="services">
@@ -1983,26 +2215,6 @@
         <span>Live Demo</span>
       </div>
       <h3>Gold City Welding</h3>
-      <p>A rugged trade-site demo for a Timmins welding company, built around service clarity, mobile contact flow, local search intent, and industrial credibility.</p>
-      <a href="gold-city-welding-case-study.html" class="recent-link">View case study</a>
-    </article>
-    <article class="recent-card">
-      <div class="recent-tags">
-        <span>Brand Launch</span>
-        <span>Apparel</span>
-        <span>Live Demo</span>
-      </div>
-      <h3>BREDIISHRED</h3>
-      <p>A brand-forward apparel demo showing HBK can build product-led launch pages, demo cart flows, and a sharper visual identity beyond standard brochure sites.</p>
-      <a href="brediishred-demo-case-study.html" class="recent-link">View case study</a>
-    </article>
-    <article class="recent-card">
-      <div class="recent-tags">
-        <span>Timmins</span>
-        <span>Welding Website</span>
-        <span>Live Demo</span>
-      </div>
-      <h3>Gold City Welding</h3>
       <p>A heavy-duty welding and industrial repair website demo with service pages, jobsite imagery, quote flow, gallery proof, and mobile-first local trust signals.</p>
       <div class="recent-links">
         <a href="gold-city-welding-case-study.html" class="recent-link">View case study</a>
@@ -2011,8 +2223,8 @@
     </article>
     <article class="recent-card">
       <div class="recent-tags">
+        <span>Brand Launch</span>
         <span>Apparel</span>
-        <span>React Shop</span>
         <span>Live Demo</span>
       </div>
       <h3>BREDIISHRED</h3>
@@ -2178,7 +2390,7 @@
 <section id="packages">
   <div class="section-tag">Pricing</div>
   <h2>Package Details</h2>
-  <p class="section-intro">Every service is fixed-price and clearly scoped. These ranges are in CAD and positioned for Timmins and Northern Ontario businesses that want credible work without agency-level overhead.</p>
+  <p class="section-intro">Every service is fixed-price and clearly scoped. These ranges are in CAD and positioned for Timmins and Northern Ontario businesses that want credible work without agency-level overhead. Deployment is included on the standard HBK stack. Domain registration, business email, and specialty subscriptions stay separate and client-owned.</p>
   <table class="packages-table">
     <thead>
       <tr>
@@ -2191,13 +2403,13 @@
     <tbody>
       <tr>
         <td class="service-col">Website Upgrade<br><small style="color:#555;font-weight:400;font-size:12px;letter-spacing:0">HBK Site Fix</small></td>
-        <td>Homepage refresh, mobile fix, call buttons, form cleanup, basic SEO</td>
+        <td>Homepage refresh, mobile fix, call buttons, form cleanup, basic SEO, and deployment back to your existing stack or HBK's standard Cloudflare setup</td>
         <td class="price-col">$900-$1,800</td>
         <td>3-7 days</td>
       </tr>
       <tr>
         <td class="service-col">Full Website Build<span class="badge">Most Popular</span><br><small style="color:#555;font-weight:400;font-size:12px;letter-spacing:0">HBK Full Build</small></td>
-        <td>5-page site, mobile-first, quote form, gallery, about, services, contact, SEO-ready</td>
+        <td>5-page site, mobile-first, quote form, gallery, about, services, contact, SEO-ready structure, SSL, analytics hookup, and Cloudflare deployment</td>
         <td class="price-col">$2,500-$5,500</td>
         <td>1-3 weeks</td>
       </tr>
@@ -2233,7 +2445,7 @@
       </tr>
       <tr>
         <td class="service-col">Quote Form Automation</td>
-        <td>Online form to email lead delivery and auto-responder</td>
+        <td>Online form to email lead delivery, acknowledgment flow, and basic auto-responder setup</td>
         <td class="price-col">$400-$900</td>
         <td>1-2 days</td>
       </tr>
@@ -2245,7 +2457,21 @@
       </tr>
     </tbody>
   </table>
-  <p class="quote-micro" style="margin-top:18px;">HST is extra. Multi-location sites, bilingual builds, e-commerce, hiring pages, and custom app work are quoted separately after review.</p>
+  <div class="packages-note-grid">
+    <article class="packages-note-card">
+      <h3>Included</h3>
+      <p>Scope planning, design/build work, mobile optimization, launch setup, SSL, and standard Cloudflare deployment are part of the build price for brochure-style sites on the HBK stack.</p>
+    </article>
+    <article class="packages-note-card">
+      <h3>Separate</h3>
+      <p>Domain registration or transfers, Google Workspace or other business email subscriptions, premium plugins, paid stock, and any third-party software fees stay separate and client-owned.</p>
+    </article>
+    <article class="packages-note-card">
+      <h3>Typical Ongoing</h3>
+      <p>Standard static hosting can stay lean on Cloudflare. The normal recurring costs are usually the domain, business email, and optional maintenance if you want HBK managing updates and support.</p>
+    </article>
+  </div>
+  <p class="quote-micro" style="margin-top:18px;">HST is extra. Multi-location sites, bilingual builds, e-commerce, hiring pages, business email subscriptions, and custom app work are quoted separately after review.</p>
 </section>
 
 <!-- PROCESS -->
